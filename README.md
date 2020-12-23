@@ -1,24 +1,75 @@
-# README
+## usersテーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column              | Type       | Options     |
+| ------------------- | ---------- | ----------- |
+| nickname            | string     | null: false |
+| email               | string     | null: false |
+| encrypted_password  | string     | null: false |
+| last_name           | string     | null: false |
+| first_name          | string     | null: false |
+| last_name_kana      | string     | null: false |
+| first_name_kana     | string     | null: false |
+| birthday            | date       | null: false |
 
-Things you may want to cover:
+### Association
+- has_many :reviews
+- has_many :orders
+- has_one :address
 
-* Ruby version
+## itemsテーブル
+| Column             | Type         | Options                         |
+| ------------------ | ------------ | ------------------------------- |
+| name               | string       | null: false                     |
+| price              | text         | null: false                     |
+| info               | string       | null: false                     |
+| size               | text         | null: false                     |
+| alcohol_degree     | integer      | null: false                     |
+| category_id        | integer      | null: false                     |
+| rice_id            | integer      | null: false                     |
+| method_id          | integer      | null: false                     |
 
-* System dependencies
+### Association
+- has_many :reviews
+- has_one :order
+- belongs_to :category
+- belongs_to :rice
+- belongs_to :method
 
-* Configuration
+## ordersテーブル
+| Column        | Type       | Options                         |
+| ------------- | ---------- | ------------------------------- |
+| user          | references | null: false, foreign_key: true  |
+| item          | references | null: false, foreign_key: true  |
 
-* Database creation
+### Association
+- belongs_to :user
+- belongs_to :item
+- has_one    :address
 
-* Database initialization
+## addressesテーブル
+| Column           | Type       | Options                         |
+| ---------------- | ---------- | ------------------------------- |
+| postcode         | string     | null: false                     |
+| prefecture_id    | integer    | null: false                     |
+| city             | string     | null: false                     |
+| block            | string     | null: false                     |
+| building         | string     |                                 |
+| phone_number     | string     | null: false                     |
+| order            | references | null: false, foreign_key: true  |
 
-* How to run the test suite
+### Association
+- belongs_to :user
+- belongs_to :order
 
-* Services (job queues, cache servers, search engines, etc.)
+## reviewsテーブル
+| Column           | Type       | Options                         |
+| ---------------- | ---------- | ------------------------------- |
+| taste            | integer    | null: false                     |
+| scent            | integer    | null: false                     |
+| recommend_score  | integer    | null: false                     |
+| otsumami         | string     |                                 |
+| comment          | string     | null: false                     |
 
-* Deployment instructions
-
-* ...
+### Association
+- belongs_to :user
+- belongs_to :item
