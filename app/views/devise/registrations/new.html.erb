@@ -1,6 +1,6 @@
-<%= render "shared/second-header"%>
+<%= render "shared/header"%>
 
-<%= form_with url: '#', class: 'registration-main', local: true do |f| %>
+<%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
 <div class='form-wrap'>
   <div class='form-header'>
     <h1 class='form-header-text'>
@@ -8,7 +8,7 @@
     </h1>
   </div>
 
-  <%#= render 'shared/error_messages', model: f.object %>
+  <%= render 'shared/error_messages', model: f.object %>
 
   <div class="form-group">
     <div class='form-text-wrap'>
@@ -95,7 +95,7 @@
     </h2>
   </div>
   <div class='register-btn'>
-    <%= f.submit "会員登録" ,class:"register-blue-btn" %>
+    <%= f.submit "会員登録", class:"register-blue-btn" %>
   </div>
   <p class='register-info'>本人情報の登録について</p>
 </div>
