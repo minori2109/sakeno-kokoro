@@ -1,0 +1,45 @@
+<%# 下部広告部分 %>
+<div class='ad-footer-contents'>
+  <p class='ad-footer-explain'>
+    日本酒を飲んで、感想をシェアしよう
+  </p>
+  <h2 class='ad-footer-title'>
+    新しい日本酒に出会おう
+  </h2>
+  <div class='store-btn'>
+    <%#= link_to image_tag("https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2011-09-21&kind=iossoftware&bubble=ios_apps", class:"apple-btn"), "#" %>
+    <%#= link_to image_tag("dl-android.png", class:"google-btn"), "#" %>
+  </div>
+</div>
+<%# /下部広告部分 %>
+
+<div class='footer'>
+  <div class='footer-contents'>
+    <div class='sakenokokoro-details'>
+      <h2 class='footer-content-head'>SAKEnoKOKOROについて</h2>
+      <ul>
+        <li><%= link_to '会社概要（運営会社)', "#", class: "footer-link" %></li>
+        <li><%= link_to 'プライバシーポリシー', "#", class: "footer-link" %></li>
+        <li><%= link_to 'SAKEnoKOKORO利用規約', "#", class: "footer-link" %></li>
+        <li><%= link_to 'ポイントに関する特約', "#", class: "footer-link" %></li>
+      </ul>
+    </div>
+    <div class='sakenokokoro-details'>
+      <h2 class='footer-content-head'>SAKEnoKOKOROを見る</h2>
+      <ul>
+        <li><%= link_to 'カテゴリー一覧', "#", class: "footer-link" %></li>
+        <li><%= link_to 'ブランド一覧', "#", class: "footer-link" %></li>
+      </ul>
+    </div>
+    <div class='sakenokokoro-details'>
+      <h2 class='footer-content-head'>SAKEnoKOKOROご利用案内</h2>
+      <ul>
+        <li><%= link_to 'ご利用ガイド', "#", class: "footer-link" %></li>
+        <li><%= link_to 'お問い合わせ', "#", class: "footer-link" %></li>
+        <li><%= link_to 'TOP', "#", class: "footer-link" %></li>
+      </ul>
+    </div>
+  </div>
+  <%= link_to image_tag("company-logo-white.png", class:"logo-white"), "#" %>
+  <p>© SAKEnoKOKORO</p>
+</div>
