@@ -102,34 +102,5 @@
   </div>
   <%# /おすすめカテゴリー %>
 
-  <%# 商品一覧 %>
-  <div class='item-contents'>
-    <h2 class='title'>
-      <%= link_to '商品一覧', '#' %>
-    </h2>
-
-    <ul class='item-lists'>
-      <%# 商品がない場合のダミー %>
-      <li class='list'>
-        <%= link_to '#' do %>
-        <%= image_tag "sake-intro02.jpg", class: "item-img" %>
-        <div class='item-info'>
-          <h3 class='item-name'>
-          澤屋まつもと
-          </h3>
-        <div class='item-price'>	
-          <span>99999999円<br>(税込み)</span>	
-            <div class='heart-btn'>	
-              <%= image_tag "heart.png", class:"heart-icon" %>	
-              <span class='heart-count'>0</span>
-            </div>
-          </div>
-        </div>
-        <% end %>
-      </li>
-      <%# //商品がない場合のダミー %>	
-    </ul>
-  </div>
-  <%# /商品一覧 %>
 </div>
 <%= render "shared/footer" %>

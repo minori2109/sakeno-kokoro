@@ -33,7 +33,7 @@ a {
 
 /* //画面上部の「SAKEnoKOKORO」帯部分 */
 
-/* SAKEnoKOKORO3つの特徴部分 */
+/* SAKEnoKOKOROおすすめ商品部分 */
 .select-reason-contents {
   padding: 5vh 15vw;
 }
@@ -50,7 +50,7 @@ a {
   content: '';
   width: 70px;
   height: 4px;
-  background-color: navy;
+  background-color: lightsteelblue;
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -85,7 +85,8 @@ a {
   font-size: 30px;
   text-align: center;
   line-height: 60px;
-  background-color: navy;
+  background-color: lightsteelblue;
+  opacity: 95%;
   color: #fff;
 }
 
@@ -95,16 +96,12 @@ a {
   line-height: 50px;
 }
 
-// .reason-list-blue-text {
-//   color: #3ccace;
-// }
-
 .reason-list-description {
   font-size: 18px;
   margin-top: 20px;
 }
 
-/* //SAKEnoKOKORO3つの特徴部分 */
+/* //SAKEnoKOKOROおすすめ商品部分 */
 
 
 /* 画面中央の「レビュー数日本一位」帯部分*/
@@ -166,7 +163,7 @@ a {
   content: '';
   width: 70px;
   height: 4px;
-  background-color: navy;
+  background-color: lightsteelblue;
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -198,100 +195,3 @@ a {
 }
 
 /* //おすすめカテゴリー */
-
-/* 商品一覧 */
-
-.item-contents {
-  background-color: #FFF;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10vh 0;
-}
-
-.item-contents>.title {
-  font-size: 5vh;
-  line-height: 1.4;
-  font-weight: bold;
-}
-
-// .item-contents>.subtitle {
-//   font-size: 3vh;
-//   margin: 1vh 0;
-//   text-decoration: none;
-//   color: #3ccace;
-//   font-weight: bold;
-// }
-
-.item-lists {
-  width: 100vw;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.item-lists>.list {
-  width: 37vh;
-  padding: 1vw;
-  background-color: #FFF;
-}
-
-
-.item-img-content {
-  position: relative;
-}
-
-.item-img {
-  width: 33vh;
-  height: 33vh;
-}
-
-// .sold-out {
-//   position: absolute;
-//   top: 40%;
-//   width: 100%;
-//   text-align: center;
-//   background-color: crimson;
-//   transform: skewY(-10deg);
-// }
-
-// .sold-out>span {
-//   color: #FFF;
-//   font-size: 45px;
-//   font: bold;
-// }
-
-
-.item-info {
-  background-color: #FFF;
-  color: black;
-  padding: 1vw;
-}
-
-.item-name {
-  font-size: 2.5vh;
-}
-
-.item-price {
-  font-size: 1.5vh;
-  display: flex;
-  justify-content: space-between;
-}
-
-
-.heart-btn {
-  display: flex;
-  align-items: center;
-}
-
-.heart-icon {
-  height: 2vh;
-  width: 2vh;
-  margin-right: 0.5vw;
-}
-
-.heart-count {
-  font-size: 2vh;
-}
-
-/* //商品一覧 */
