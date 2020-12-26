@@ -1,0 +1,106 @@
+<%= render "shared/header" %>
+
+<%# 画面上部の「SAKEnoKOKORO」帯部分 %>
+  <div class='title-contents'>
+    <h2 class='service-title'>
+      SAKEnoKOKORO
+    </h2>
+  </div>
+  <%# /画面上部の「SAKEnoKOKORO」帯部分  %>
+
+  <%# SAKEnoKOKORO3つの特徴部分 %>
+  <div class='select-reason-contents'>
+    <h2 class='title'>
+      SAKEnoKOKOROおすすめ商品
+    </h2>
+    <ul class='reason-lists'>
+      <li class='list'>
+        <%= image_tag "sake-intro01.jpg", class:"list-pict" %>
+        <span class='reason-list-number'>1</span>
+        <h3 class='reason-list-text'>
+          醸し人九平次
+        </h3>
+        <p class='reason-list-description'>
+          すっきりした味！
+        </p>
+      </li>
+      <li class='list'>
+        <%= image_tag "sake-intro02.jpg", class:"list-pict" %>
+        <span class='reason-list-number'>2</span>
+        <h3 class='reason-list-text'>
+          澤屋まつもと
+        </h3>
+        <p class='reason-list-description'>
+          Ultraは別格
+        </p>
+      </li>
+      <li class='list'>
+        <%= image_tag "sake-intro01.jpg", class:"list-pict" %>
+        <span class='reason-list-number'>3</span>
+        <h3 class='reason-list-text'>
+          仙介
+        </h3>
+        <p class='reason-list-description'>
+          辛口なのに飲みやすい
+        </p>
+      </li>
+    </ul>
+  </div>
+  <%# /SAKEnoKOKORO3つの特徴部分 %>
+
+  <%# 画面中央の「レビュー数日本一位」帯部分 %>
+  <div class='ad-contents'>
+    <h2 class='ad-title'>
+      レビュー数日本一位
+    </h2>
+    <p class='ad-explain'>
+      SAKEnoKOKOROは、日本週通販サイトで最も人気。
+    </p>
+    <p class='ad-explain'>
+      日本酒の品揃えも業界最多です！
+    </p>
+    <p class='ad-explain'>
+      今まで見たことないような日本酒に出会えるかもしれません。
+    </p>
+  </div>
+  <%# /画面中央の「レビュー数日本一位」帯部分 %>
+
+  <%# おすすめカテゴリー %>
+  <div class='feature-contents'>
+    <h2 class='title'>
+      おすすめカテゴリー
+    </h2>
+    <ul class='feature-lists'>
+      <li class='list'>
+        <%= image_tag "feature.png", class:"list-pict" %>
+        <h3 class='feature-list-text'>
+          種類
+        </h3>
+        <p class='feature-list-description'>
+          純米大吟醸・大吟醸・純米などから検索できます
+        </p>
+      </li>
+      <li class='list'>
+        <%= image_tag "sakagura.png", class:"list-pict" %>
+        <h3 class='feature-list-text'>
+          絞り方・貯蔵法
+        </h3>
+        <p class='feature-list-description'>
+          ひやおろし・生酒・山廃などから検索できます
+        </p>
+      </li>
+      <li class='list'>
+        <%= image_tag "rice.png", class:"list-pict" %>
+        <h3 class='feature-list-text'>
+          酒米
+        </h3>
+        <p class='feature-list-description'>
+          山田錦・雄町・愛山などから検索できます
+        </p>
+      </li>
+    </ul>
+  </div>
+  <%# /おすすめカテゴリー %>
+
+</div>
+<%= render "shared/footer" %>
