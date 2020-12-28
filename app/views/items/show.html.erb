@@ -78,19 +78,25 @@
   </div>
   <%# /商品の概要 %>
 
-  <div class="comment-box">
-    <form>
-      <textarea class="comment-text"></textarea>
-      <p class="comment-warn">
-        相手のことを考え丁寧なコメントを心がけましょう。
-        <br>
-        不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      </p>
-      <button type="submit" class="comment-btn">
-        <%#= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-        <span>コメントする<span>
-      </button>
-    </form>
+  <div class="review-box">
+    <h2 class="review-title">
+      レビュー
+    </h2>
+    <div class="review-container">
+      <div class="review-item">
+        <%= link_to "ユーザーニックネーム", '#' %>
+        <span class="created-date">＜2020年12月1日に投稿＞</span>
+        <p>おすすめ度：★★★★★</p>
+        <p>味：3</p>
+        <p>香り：5</p>
+        <p>コメント：有名な銘柄なので、安定のおいしさ。</p>
+        <p>おすすめのおつまみ：お刺身、チーズ</p>
+      </div>
+    </div>
+    <div class="review-info">
+      <p>※味の評価について：-10から10点で評価。マイナスほど辛口になり、プラスになると甘口。</p>
+      <p>※香りの評価について：-10から10点で評価。マイナスほど香りが低く、プラスになると香り高い。</p>
+    </div>
   </div>
 </div>
 
