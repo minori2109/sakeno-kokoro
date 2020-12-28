@@ -13,14 +13,12 @@ a {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding: 3vh 15vw;
-  /* text-shadow: 0 0 8px rgba(0, 0, 0, 0.9); */
+  padding: 2vh 15vw;
 }
 
 .menu-title {
   color: #333333;
   font-size: 32px;
-  border-bottom: 2px solid #b0c4de;
 }
 
 .list {
@@ -45,8 +43,4 @@ a {
 
 .heart-icon {
   font-size: 0.9em;
-}
-
-.breadcrumb {
-  color: #333333;
 }

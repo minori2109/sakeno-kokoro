@@ -7,6 +7,12 @@ crumb :items do
   parent :root
 end
 
+crumb :item_show do
+  item = Item.find(params[:id])
+  link "#{item.name}"
+  parent :items
+end
+
 # crumb :project do |project|
 #   link project.name, project_path(project)
 #   parent :projects

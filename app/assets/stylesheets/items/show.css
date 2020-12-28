@@ -77,8 +77,10 @@
   font-size: 18px;
   font-weight: normal;
   color: #FFF;
+  text-align: center;
   margin: 0 auto;
-  padding: 8px;
+  width: 12vw;
+  min-width: 200px;
   border-radius: 10px;
 }
 
@@ -101,7 +103,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 20px;
 }
 
 .favorite-heart-icon {

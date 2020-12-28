@@ -1,4 +1,8 @@
 <%= render "shared/header" %>
+<div class="breadcrumb">
+  <% breadcrumb :item_show %>
+  <p><%= breadcrumbs separator: " &rsaquo; " %></p>
+</div>
 
 <%# 商品の概要 %>
 <div class="item-show">
@@ -23,10 +27,10 @@
         <span class="item-price">
           <%= "¥#{@item.price}" %>
         </span>
-        <span>(税込)</span>
+        <span>（税込）</span>
       </div>
       <div class="option">
-        <%= link_to 'この商品を購入する', "#" ,class:"item-grey-btn"%>
+        <%= link_to '購入する', "#" ,class:"item-grey-btn"%>
         <div class="favorite-btn">
           <%= image_tag "heart.png" ,class:"favorite-heart-icon" ,width:"20",height:"20"%>
           <span>お気に入り 0</span>

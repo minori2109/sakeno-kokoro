@@ -1,12 +1,15 @@
 <%= render "shared/header" %>
+<div class="breadcrumb">
+  <% breadcrumb :items %>
+  <p><%= breadcrumbs separator: " &rsaquo; " %></p>
+</div>
+
 <div class='item-title-contents'>
   <h1 class='menu-title'>
     商品一覧
-  </h1> 
+  </h1>
 </div>
-<div class="breadcrumb">
-  <% breadcrumb :items %>
-</div>
+
 <div class="items-list">
   <% @items.each do |item| %> 
     <li class='list'>
