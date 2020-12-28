@@ -10,7 +10,7 @@
 <div class="items-list">
   <% @items.each do |item| %> 
     <li class='list'>
-      <%= link_to "#" do %>
+      <%#= link_to "#" do %>
       <%# <div class='item-img-content'>
         <%= image_tag item.image, class: "item-img" %>
         
@@ -22,9 +22,11 @@
 
       <%# </div> %>
       <div class='item-column'>
-        <h3 class='item-name'>
-          <%= item.name %>
-        </h3>
+        <%= link_to item_path(item.id) do %>
+          <h3 class='item-name'>
+            <%= item.name %>
+          </h3>
+        <% end %>
         <p class="item-info">
           <%= item.info %>
         </p>
@@ -36,7 +38,6 @@
           </div>
         </div>
       </div>
-      <% end %>
     </li>
   <% end %>
 </div>

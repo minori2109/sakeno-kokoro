@@ -1,0 +1,93 @@
+<%= render "shared/header" %>
+
+<%# 商品の概要 %>
+<div class="item-show">
+  <div class="item-box">
+  <div class="item-top">
+    <div class="item-left">
+      <div class='item-img-content'>
+        <%= image_tag "sake_example.png" ,class:"item-box-img" %>
+        <%# <% if @item.order != nil %>
+          <%# <div class='sold-out'>
+            <span>Sold Out!!</span>
+          </div> %>
+        <%# end %>
+      </div>
+    </div>
+    <div class="item-right">
+      <h2 class="name">
+        <%= @item.name %>
+      </h2>
+      <div class="item-price-box">
+        <span class="item-price-name">価格：</span>
+        <span class="item-price">
+          <%= "¥#{@item.price}" %>
+        </span>
+        <span>(税込)</span>
+      </div>
+      <div class="option">
+        <%= link_to 'この商品を購入する', "#" ,class:"item-grey-btn"%>
+        <div class="favorite-btn">
+          <%= image_tag "heart.png" ,class:"favorite-heart-icon" ,width:"20",height:"20"%>
+          <span>お気に入り 0</span>
+        </div>
+      </div>
+      <div class="item-explain-box">
+        <h4 class="item-explain">商品説明</h4>
+        <p><%= @item.info %></p>
+      </div>
+    </div>
+  </div>
+
+    <table class="detail-table">
+      <tbody>
+        <tr>
+          <th class="detail-item">容量</th>
+          <td class="detail-value"><%= @item.size %>ml</td>
+        </tr>
+        <tr>
+          <th class="detail-item">度数</th>
+          <td class="detail-value"><%= @item.alcohol_degree %>度</td>
+        </tr>
+        <tr>
+          <th class="detail-item">カテゴリー</th>
+          <td class="detail-value"><%= @item.category_id %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">酒米</th>
+          <td class="detail-value"><%= @item.rice_id %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">貯蔵法・絞り方</th>
+          <td class="detail-value"><%= @item.method_id %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">蔵元</th>
+          <td class="detail-value"><%= "hoge" %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">配送方法</th>
+          <td class="detail-value">この商品は<%= "cool" %>便でお届けします</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <%# /商品の概要 %>
+
+  <div class="comment-box">
+    <form>
+      <textarea class="comment-text"></textarea>
+      <p class="comment-warn">
+        相手のことを考え丁寧なコメントを心がけましょう。
+        <br>
+        不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      </p>
+      <button type="submit" class="comment-btn">
+        <%#= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+        <span>コメントする<span>
+      </button>
+    </form>
+  </div>
+</div>
+
+<%= render "shared/footer" %>
