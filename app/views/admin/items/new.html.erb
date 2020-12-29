@@ -1,8 +1,8 @@
 <div class="items-sell-contents">
   <header class="items-sell-header">
-    <%= link_to image_tag('company-logo.png' , size: '185x50'), "/" %>
-    
+    <%= link_to image_tag('company-logo.png' , size: '180x70'), "/" %>
   </header>
+
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with model: [:admin, @item], local: true do |f| %>
@@ -49,12 +49,12 @@
           度数
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :alcohol_degree, class:"items-text", id:"item-category", placeholder:"アルコール度数（必須 20文字まで)", maxlength:"20" %>
+        <%= f.text_area :alcohol_degree, class:"items-input", id:"item-alcohol-degree", placeholder:"アルコール度数（例：20度)", maxlength:"20" %>
         <div class="weight-bold-text">
           容量
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :size, class:"items-text", id:"item-category", placeholder:"容量（必須 20文字まで)\n例）720ml 箱入り", maxlength:"20" %>
+        <%= f.text_area :size, class:"items-input", id:"item-size", placeholder:"容量（例：720ml 箱入り)", maxlength:"20" %>
         <div class="weight-bold-text">
           カテゴリー
           <span class="indispensable">必須</span>
@@ -64,22 +64,22 @@
           酒米
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:rice_id, Rice.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:rice_id, Rice.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"item-rice"}) %>
         <div class="weight-bold-text">
           貯蔵法・絞り方
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:storage_method_id, StorageMethod.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:storage_method_id, StorageMethod.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"item-storage-method"}) %>
         <div class="weight-bold-text">
           蔵元
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:kuramoto_id, Kuramoto.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:kuramoto_id, Kuramoto.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"item-kuramoto"}) %>
         <div class="weight-bold-text">
           蔵元所在地
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"item-prefecture"}) %>
       </div>
     </div>
     <%# /商品の詳細 %>
@@ -88,14 +88,13 @@
     <div class="items-detail">
       <div class="weight-bold-text question-text">
         <span>配送について</span>
-        <a class="question" href="#">?</a>
       </div>
       <div class="form">
         <div class="weight-bold-text">
-          配送料方法（クール便または常温など）
+          配送方法（クール便または常温など）
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :delivery_method, class:"items-text", id:"delibery-method", placeholder:"配送方法（必須 20文字まで)", maxlength:"20" %>
+        <%= f.text_area :delivery_method, class:"items-input", id:"delibery-method", placeholder:"配送方法（例：クール便)", maxlength:"20" %>
       </div>
     </div>
     <%# /配送について %>
@@ -103,8 +102,7 @@
     <%# 販売価格 %>
     <div class="sell-price">
       <div class="weight-bold-text question-text">
-        <span>販売価格<br>(¥300〜9,999,999)</span>
-        <a class="question" href="#">?</a>
+        <span>商品価格</span>
       </div>
       <div>
         <div class="price-content">
@@ -133,7 +131,7 @@
 
     <%# 下部ボタン %>
     <div class="sell-btn-contents">
-      <%= f.submit "出品する" ,class:"sell-btn" %>
+      <%= f.submit "登録する" ,class:"sell-btn" %>
       <%=link_to 'もどる', admin_items_path, class:"back-btn" %>
     </div>
     <%# /下部ボタン %>
@@ -141,3 +139,5 @@
   <% end %>
 
 </div>
+
+<%= render 'shared/second-footer' %>

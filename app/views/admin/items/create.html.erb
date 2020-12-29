@@ -1,3 +1,7 @@
-<h1>商品の登録が完了しました</h1>
-<%=link_to '別の商品を登録する', new_admin_item_path, class:"back-btn" %>
-<%=link_to 'Topページへもどる', root_path, class:"back-btn" %>
+<%= render "shared/header" %>
+
+<h1 class="create-message">商品の登録が完了しました</h1>
+<%=link_to '別の商品を登録する', new_admin_item_path, class:"new-item-btn" %>
+<%=link_to 'Topページへもどる', root_path, class:"top-btn" %>
+
+<%= render "shared/footer" %>
