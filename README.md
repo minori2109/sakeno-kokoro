@@ -26,7 +26,10 @@
 | alcohol_degree     | integer      | null: false                     |
 | category_id        | integer      | null: false                     |
 | rice_id            | integer      | null: false                     |
-| method_id          | integer      | null: false                     |
+| method_id          | integer      |                                 |
+| kuramoto_id        | integer      | null: false                     |
+| prefecture_id      | integer      | null: false                     |
+| delivery_method    | text         | null: false                     |
 
 ### Association
 - has_many :reviews
@@ -34,6 +37,8 @@
 - belongs_to :category
 - belongs_to :rice
 - belongs_to :method
+- belongs_to :kuramoto
+- belongs_to :prefecture
 
 ## ordersテーブル
 | Column        | Type       | Options                         |

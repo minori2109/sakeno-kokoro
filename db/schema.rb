@@ -20,7 +20,10 @@ ActiveRecord::Schema.define(version: 2020_12_26_161238) do
     t.integer "alcohol_degree", null: false
     t.integer "category_id", null: false
     t.integer "rice_id", null: false
-    t.integer "method_id", null: false
+    t.integer "method_id"
+    t.integer "kuramoto_id", null: false
+    t.integer "prefecture_id", null: false
+    t.text "delivery_method", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
