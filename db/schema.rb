@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_26_161238) do
+ActiveRecord::Schema.define(version: 2020_12_29_023606) do
+
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -18,12 +24,34 @@ ActiveRecord::Schema.define(version: 2020_12_26_161238) do
     t.string "info", null: false
     t.text "size", null: false
     t.integer "alcohol_degree", null: false
-    t.integer "category_id", null: false
-    t.integer "rice_id", null: false
-    t.integer "method_id"
-    t.integer "kuramoto_id", null: false
+    t.bigint "category_id"
+    t.bigint "rice_id"
+    t.bigint "storage_method_id"
+    t.bigint "kuramoto_id"
     t.integer "prefecture_id", null: false
     t.text "delivery_method", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["kuramoto_id"], name: "index_items_on_kuramoto_id"
+    t.index ["rice_id"], name: "index_items_on_rice_id"
+    t.index ["storage_method_id"], name: "index_items_on_storage_method_id"
+  end
+
+  create_table "kuramotos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "rice", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "storage_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -46,4 +74,8 @@ ActiveRecord::Schema.define(version: 2020_12_26_161238) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "items", "categories"
+  add_foreign_key "items", "kuramotos"
+  add_foreign_key "items", "rice"
+  add_foreign_key "items", "storage_methods"
 end

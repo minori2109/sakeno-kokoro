@@ -63,3 +63,4 @@ gem "gretel"
 gem 'kaminari'
 gem 'bootstrap', '~> 4.5.0'
 gem 'jquery-rails'
+gem 'active_hash'
