@@ -7,6 +7,10 @@ class Item < ApplicationRecord
   belongs_to :storage_method
   belongs_to :kuramoto
 
+  # 画像の添付
+  has_one_attached :image
+
+  # バリデーション
   with_options presence: { message: 'を入力してください' } do
     validates :name
     validates :info
