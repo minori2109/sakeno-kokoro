@@ -141,6 +141,7 @@
 
 /* /商品の概要 */
 
+/* レビュー表示欄 */
 .review-box {
   background-color: #FFF;
   width: 70vw;
@@ -159,7 +160,7 @@
 
 .review-container {
   width: 50vw;
-  border: 1px solid #333333;
+  border-bottom: 1px solid #333333;
 }
 
 .review-item p{
@@ -171,3 +172,4 @@
   color: gray;
   font-size: small;
 }
+/* /レビュー表示欄/ */
