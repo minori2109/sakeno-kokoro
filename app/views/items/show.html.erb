@@ -1,0 +1,107 @@
+<%= render "shared/header" %>
+<div class="breadcrumb">
+  <% breadcrumb :item_show %>
+  <p><%= breadcrumbs separator: " &rsaquo; " %></p>
+</div>
+
+<%# 商品の概要 %>
+<div class="item-show">
+  <div class="item-box">
+  <div class="item-top">
+    <div class="item-left">
+      <div class='item-img-content'>
+        <%= image_tag "sake_example.png" ,class:"item-box-img" %>
+        <%# <% if @item.order != nil %>
+          <%# <div class='sold-out'>
+            <span>Sold Out!!</span>
+          </div> %>
+        <%# end %>
+      </div>
+    </div>
+    <div class="item-right">
+      <h2 class="name">
+        <%= @item.name %>
+      </h2>
+      <div class="item-price-box">
+        <span class="item-price-name">価格：</span>
+        <span class="item-price">
+          <%= "¥#{@item.price}" %>
+        </span>
+        <span>（税込）</span>
+      </div>
+      <div class="option">
+        <%= link_to '購入する', "#" ,class:"item-grey-btn"%>
+        <div class="favorite-btn">
+          <%= image_tag "heart.png" ,class:"favorite-heart-icon" ,width:"20",height:"20"%>
+          <span>お気に入り 0</span>
+        </div>
+      </div>
+      <div class="item-explain-box">
+        <h4 class="item-explain">商品説明</h4>
+        <p><%= @item.info %></p>
+      </div>
+    </div>
+  </div>
+
+    <table class="detail-table">
+      <tbody>
+        <tr>
+          <th class="detail-item">容量</th>
+          <td class="detail-value"><%= @item.size %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">度数</th>
+          <td class="detail-value"><%= @item.alcohol_degree %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">カテゴリー</th>
+          <td class="detail-value"><%= @item.category.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">酒米</th>
+          <td class="detail-value"><%= @item.rice.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">貯蔵法・絞り方</th>
+          <td class="detail-value"><%= @item.storage_method.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">蔵元</th>
+          <td class="detail-value"><%= @item.kuramoto.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">蔵元所在地</th>
+          <td class="detail-value"><%= @item.prefecture.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">配送方法</th>
+          <td class="detail-value">この商品は<%= @item.delivery_method %>でお届けします</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <%# /商品の概要 %>
+
+  <div class="review-box">
+    <h2 class="review-title">
+      レビュー
+    </h2>
+    <div class="review-container">
+      <div class="review-item">
+        <%= link_to "ユーザーニックネーム", '#' %>
+        <span class="created-date">＜2020年12月1日に投稿＞</span>
+        <p>おすすめ度：★★★★★</p>
+        <p>味：3</p>
+        <p>香り：5</p>
+        <p>おすすめのおつまみ：お刺身、チーズ</p>
+        <p>有名な銘柄なので、安定のおいしさ。お刺身と合わせると最高。意外とチーズやチョコもあう。</p>
+      </div>
+    </div>
+    <div class="review-info">
+      <p>※味の評価について：-10から10点で評価。マイナスほど辛口になり、プラスになると甘口。</p>
+      <p>※香りの評価について：-10から10点で評価。マイナスほど香りが低く、プラスになると香り高い。</p>
+    </div>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

@@ -23,17 +23,22 @@
 | price              | text         | null: false                     |
 | info               | string       | null: false                     |
 | size               | text         | null: false                     |
-| alcohol_degree     | integer      | null: false                     |
-| category_id        | integer      | null: false                     |
-| rice_id            | integer      | null: false                     |
-| method_id          | integer      | null: false                     |
+| alcohol_degree     | text         | null: false                     |
+| category_id        | references   | null: false, foreign_key: true  |
+| rice_id            | references   | null: false, foreign_key: true  |
+| storage_method_id  | references   | null: false, foreign_key: true  |
+| kuramoto_id        | references   | null: false, foreign_key: true  |
+| prefecture_id      | integer      | null: false                     |
+| delivery_method    | text         | null: false                     |
 
 ### Association
 - has_many :reviews
 - has_one :order
 - belongs_to :category
 - belongs_to :rice
-- belongs_to :method
+- belongs_to :storage_method
+- belongs_to :kuramoto
+- belongs_to :prefecture
 
 ## ordersテーブル
 | Column        | Type       | Options                         |

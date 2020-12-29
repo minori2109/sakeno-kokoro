@@ -1,0 +1,9 @@
+class CreateStorageMethods < ActiveRecord::Migration[6.0]
+  def change
+    create_table :storage_methods do |t|
+      t.string      :name, null: false
+
+      t.timestamps
+    end
+  end
+end
