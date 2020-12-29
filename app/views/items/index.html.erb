@@ -8,6 +8,11 @@
   <h1 class='menu-title'>
     商品一覧
   </h1>
+  <% if user_signed_in? %>
+    <% if current_user.admin? %>
+      <%= link_to '商品を追加する', new_admin_item_path %>
+    <% end %>
+  <% end %>
 </div>
 
 <div class="items-list">
