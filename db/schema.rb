@@ -23,11 +23,11 @@ ActiveRecord::Schema.define(version: 2020_12_29_023606) do
     t.text "price", null: false
     t.string "info", null: false
     t.text "size", null: false
-    t.integer "alcohol_degree", null: false
-    t.bigint "category_id"
-    t.bigint "rice_id"
-    t.bigint "storage_method_id"
-    t.bigint "kuramoto_id"
+    t.text "alcohol_degree", null: false
+    t.bigint "category_id", null: false
+    t.bigint "rice_id", null: false
+    t.bigint "storage_method_id", null: false
+    t.bigint "kuramoto_id", null: false
     t.integer "prefecture_id", null: false
     t.text "delivery_method", null: false
     t.datetime "created_at", precision: 6, null: false
