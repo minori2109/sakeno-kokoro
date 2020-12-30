@@ -15,6 +15,20 @@ class Admin::ItemsController < ApplicationController
     render action: "new" unless @item.save
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      flash[:success] = '編集が完了しました'
+      redirect_to items_path
+    else
+      render action: "edit"
+    end
+  end
+
   private
   def if_not_admin
     redirect_to root_path unless current_user.admin?
