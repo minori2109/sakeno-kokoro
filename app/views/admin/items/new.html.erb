@@ -94,7 +94,7 @@
           配送方法（クール便または常温など）
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :delivery_method, class:"items-input", id:"delibery-method", placeholder:"配送方法（例：クール便)", maxlength:"20" %>
+        <%= f.text_area :delivery_method, class:"items-input", id:"delibery-method", placeholder:"配送方法（例：クール便)", maxlength:"40" %>
       </div>
     </div>
     <%# /配送について %>
@@ -111,7 +111,7 @@
             <span class="indispensable">必須</span>
           </div>
           <span class="sell-yen">¥</span>
-          <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）300" %>
+          <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）3000", maxlength:"7" %>
         </div>
         <div class="price-content">
           <span>消費税 (10%)</span>

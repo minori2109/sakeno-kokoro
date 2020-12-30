@@ -153,6 +153,7 @@
 
 .price-input {
   height: 30px;
+  width: 60%;
   text-align: right;
   padding-right: 10px;
 }
