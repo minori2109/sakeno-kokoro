@@ -5,6 +5,8 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require data-confirm-modal
+//= require_tree .
 
 require("@rails/ujs").start()
 require("turbolinks").start()

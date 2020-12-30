@@ -15,6 +15,10 @@ class Admin::ItemsController < ApplicationController
     render action: "new" unless @item.save
   end
 
+  def show
+    @item = Item.find(params[:id])
+  end
+
   def edit
     @item = Item.find(params[:id])
   end
@@ -26,6 +30,16 @@ class Admin::ItemsController < ApplicationController
       redirect_to items_path
     else
       render action: "edit"
+    end
+  end
+
+  def destroy
+    @item = Item.find(params[:id])
+    if @item.destroy
+      flash[:error] = "商品を削除しました"
+      redirect_to items_path
+    else
+      render action: "show"
     end
   end
 
