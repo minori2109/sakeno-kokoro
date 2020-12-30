@@ -21,5 +21,4 @@ class Item < ApplicationRecord
     validates :delivery_method
     validates :price
   end
-
 end

@@ -17,7 +17,7 @@ class Admin::ItemsController < ApplicationController
       flash[:success] = '登録が完了しました'
       redirect_to items_path
     else
-      render action: "new"
+      render action: 'new'
     end
   end
 
@@ -32,20 +32,21 @@ class Admin::ItemsController < ApplicationController
       flash[:success] = '編集が完了しました'
       redirect_to items_path
     else
-      render action: "edit"
+      render action: 'edit'
     end
   end
 
   def destroy
     if @item.destroy
-      flash[:error] = "商品を削除しました"
+      flash[:error] = '商品を削除しました'
       redirect_to items_path
     else
-      render action: "show"
+      render action: 'show'
     end
   end
 
   private
+
   def if_not_admin
     redirect_to root_path unless current_user.admin?
   end
