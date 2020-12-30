@@ -1,3 +1,5 @@
+<%# CSSはapp/views/admin/items/new.html.erbと共通 %>
+
 <div class="items-sell-contents">
   <header class="items-sell-header">
     <%= link_to image_tag('company-logo.png' , size: '180x70'), "/" %>
@@ -94,7 +96,7 @@
           配送方法（クール便または常温など）
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :delivery_method, class:"items-input", id:"delibery-method", placeholder:"配送方法（例：クール便)", maxlength:"20" %>
+        <%= f.text_area :delivery_method, class:"items-input", id:"delibery-method", placeholder:"配送方法（例：クール便)", maxlength:"40" %>
       </div>
     </div>
     <%# /配送について %>
