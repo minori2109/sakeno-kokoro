@@ -12,7 +12,12 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    render action: "new" unless @item.save
+    if @item.save
+      flash[:success] = '登録が完了しました'
+      redirect_to items_path
+    else
+      render action: "new"
+    end
   end
 
   def show
