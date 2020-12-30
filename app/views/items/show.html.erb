@@ -7,41 +7,52 @@
 <%# 商品の概要 %>
 <div class="item-show">
   <div class="item-box">
-  <div class="item-top">
-    <div class="item-left">
-      <div class='item-img-content'>
-        <%= image_tag "sake_example.png" ,class:"item-box-img" %>
-        <%# <% if @item.order != nil %>
-          <%# <div class='sold-out'>
-            <span>Sold Out!!</span>
-          </div> %>
-        <%# end %>
+    <div class="row">
+      <div class="col text-center">
+        <% if user_signed_in? %>
+          <% if current_user.admin? %>
+          <%= link_to '編集する', new_admin_item_path, class: "btn btn-outline-primary" %>
+          <%= link_to '削除する', new_admin_item_path, class: "btn btn-outline-danger" %>
+          <% end %>
+        <% end %>
       </div>
     </div>
-    <div class="item-right">
-      <h2 class="name">
-        <%= @item.name %>
-      </h2>
-      <div class="item-price-box">
-        <span class="item-price-name">価格：</span>
-        <span class="item-price">
-          <%= "¥#{@item.price}" %>
-        </span>
-        <span>（税込）</span>
-      </div>
-      <div class="option">
-        <%= link_to '購入する', "#" ,class:"item-grey-btn"%>
-        <div class="favorite-btn">
-          <%= image_tag "heart.png" ,class:"favorite-heart-icon" ,width:"20",height:"20"%>
-          <span>お気に入り 0</span>
+
+    <div class="item-top">
+      <div class="item-left">
+        <div class='item-img-content'>
+          <%= image_tag @item.image ,class:"item-box-img" %>
+          <%# <% if @item.order != nil %>
+            <%# <div class='sold-out'>
+              <span>Sold Out!!</span>
+            </div> %>
+          <%# end %>
         </div>
       </div>
-      <div class="item-explain-box">
-        <h4 class="item-explain">商品説明</h4>
-        <p><%= @item.info %></p>
+      <div class="item-right">
+        <h2 class="name">
+          <%= @item.name %>
+        </h2>
+        <div class="item-price-box">
+          <span class="item-price-name">価格：</span>
+          <span class="item-price">
+            <%= "¥#{@item.price}" %>
+          </span>
+          <span>（税込）</span>
+        </div>
+        <div class="option">
+          <%= link_to '購入する', "#" ,class:"item-grey-btn"%>
+          <div class="favorite-btn">
+            <%= image_tag "heart.png" ,class:"favorite-heart-icon" ,width:"20",height:"20"%>
+            <span>お気に入り 0</span>
+          </div>
+        </div>
+        <div class="item-explain-box">
+          <h4 class="item-explain">商品説明</h4>
+          <p><%= @item.info %></p>
+        </div>
       </div>
     </div>
-  </div>
 
     <table class="detail-table">
       <tbody>

@@ -1,11 +1,27 @@
+.back-btn {
+  margin: 0 auto;
+  background-color: #fff;
+  height: 50vh;
+  align-items: center;
+  justify-content: center;
+}
+
 .create-message {
   color: #333333;
+  text-align: center;
+  padding: 10px;
 }
 
-.new-item-btn {
-  background-color: #333333;
+.btn {
+  background-color: #b0c4de;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #b0c4de;
+  border-radius: 5px;
+  font-size: 24px;
 }
 
-.top-btn {
+.top {
   background-color: #333333;
 }

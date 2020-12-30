@@ -12,6 +12,7 @@ class Item < ApplicationRecord
 
   # バリデーション
   with_options presence: { message: 'を入力してください' } do
+    validates :image
     validates :name
     validates :info
     validates :size
