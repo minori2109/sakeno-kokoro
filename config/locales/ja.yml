@@ -1,0 +1,23 @@
+ja:
+ activerecord:
+   attributes:
+     user:
+       nickname: ニックネーム
+       last_name: 名字
+       first_name: 名前
+       last_name_kana: 名字カナ
+       first_name_kana: 名前カナ
+       birthday: 生年月日
+     item:
+       category: カテゴリー
+       rice: 酒米
+       storage_method: 貯蔵法・絞り方
+       kuramoto: 蔵元
+       prefecture_id: 蔵元所在地
+       name: 商品名
+       info: 商品の説明
+       alcohol_degree: 度数
+       size: 容量
+       delivery_method: 配送方法
+       price: 販売価格
+       image: 商品画像
