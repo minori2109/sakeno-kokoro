@@ -4,10 +4,20 @@
   <p><%= breadcrumbs separator: " &rsaquo; " %></p>
 </div>
 
+<%= flash_message(flash[:success], :success) if flash[:success] %>
+<%= flash_message(flash[:error], :danger) if flash[:error] %>
+
 <div class='item-title-contents'>
   <h1 class='menu-title'>
     商品一覧
   </h1>
+  <div class="add-item">
+    <% if user_signed_in? %>
+      <% if current_user.admin? %>
+        <%= link_to '商品を追加する', new_admin_item_path, class: "btn btn-primary" %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 
 <div class="items-list">

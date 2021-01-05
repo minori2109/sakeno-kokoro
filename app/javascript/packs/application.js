@@ -5,11 +5,14 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require data-confirm-modal
+//= require_tree .
 
 require("@rails/ujs").start()
-require("turbolinks").start()
+//require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("../item_price")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

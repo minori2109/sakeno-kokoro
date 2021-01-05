@@ -19,6 +19,10 @@
   align-items: center;
 }
 
+.row {
+  margin-bottom: 10px;
+}
+
 .item-top {
   display: flex;
   justify-content: space-around;

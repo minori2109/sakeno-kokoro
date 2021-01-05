@@ -1,0 +1,145 @@
+<%# CSSはapp/views/admin/items/new.html.erbと共通 %>
+
+<div class="items-sell-contents">
+  <header class="items-sell-header">
+    <%= link_to image_tag('company-logo.png' , size: '180x70'), "/" %>
+  </header>
+
+  <div class="items-sell-main">
+    <h2 class="items-sell-title">商品の情報を編集</h2>
+    <%= form_with model: [:admin, @item], local: true do |f| %>
+
+    <%= render 'shared/error_messages', model: f.object %>
+
+    <%# 出品画像 %>
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        出品画像
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"item-image" %>
+      </div>
+    </div>
+    <div id="image-list"></div>
+    <%# /出品画像 %>
+    <%# 商品名と商品説明 %>
+    <div class="new-items">
+      <div class="weight-bold-text">
+        商品名
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :name, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          商品の説明
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :info, class:"items-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）（酒米、蔵元、風味、産地など）\n例）日本一の酒米と言われる「山田錦」を、50％まで丁寧に磨いて醸した純米大吟醸。澄んだ味わいと上品な香りが絶妙。" ,rows:"7" ,maxlength:"1000" %>
+      </div>
+    </div>
+    <%# /商品名と商品説明 %>
+
+    <%# 商品の詳細 %>
+    <div class="items-detail">
+      <div class="weight-bold-text">商品の詳細</div>
+      <div class="form">
+        <div class="weight-bold-text">
+          度数
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :alcohol_degree, class:"items-input", id:"item-alcohol-degree", placeholder:"アルコール度数（例：20度)", maxlength:"20" %>
+        <div class="weight-bold-text">
+          容量
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :size, class:"items-input", id:"item-size", placeholder:"容量（例：720ml 箱入り)", maxlength:"20" %>
+        <div class="weight-bold-text">
+          カテゴリー
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:category_id, Category.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"item-category"}) %>
+        <div class="weight-bold-text">
+          酒米
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:rice_id, Rice.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"item-rice"}) %>
+        <div class="weight-bold-text">
+          貯蔵法・絞り方
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:storage_method_id, StorageMethod.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"item-storage-method"}) %>
+        <div class="weight-bold-text">
+          蔵元
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:kuramoto_id, Kuramoto.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"item-kuramoto"}) %>
+        <div class="weight-bold-text">
+          蔵元所在地
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {include_blank: "---"}, {class:"select-box", id:"item-prefecture"}) %>
+      </div>
+    </div>
+    <%# /商品の詳細 %>
+
+    <%# 配送について %>
+    <div class="items-detail">
+      <div class="weight-bold-text question-text">
+        <span>配送について</span>
+      </div>
+      <div class="form">
+        <div class="weight-bold-text">
+          配送方法（クール便または常温など）
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :delivery_method, class:"items-input", id:"delibery-method", placeholder:"配送方法（例：クール便)", maxlength:"40" %>
+      </div>
+    </div>
+    <%# /配送について %>
+
+    <%# 販売価格 %>
+    <div class="sell-price">
+      <div class="weight-bold-text question-text">
+        <span>商品価格</span>
+      </div>
+      <div>
+        <div class="price-content">
+          <div class="price-text">
+            <span>販売価格</span>
+            <span class="indispensable">必須</span>
+          </div>
+          <span class="sell-yen">¥</span>
+          <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）3000", maxlength:"7" %>
+        </div>
+        <div class="price-content">
+          <span>消費税 (10%)</span>
+          <span>
+            <span id='add-tax-price'></span>円
+          </span>
+        </div>
+        <div class="price-content">
+          <span>本体価格</span>
+          <span>
+            <span id='base-price'></span>円
+        </div>
+        </span>
+      </div>
+    </div>
+    <%# /販売価格 %>
+
+    <%# 下部ボタン %>
+    <div class="sell-btn-contents">
+      <%= f.submit "編集完了" ,class:"sell-btn" %>
+      <%=link_to 'もどる', items_path(@item.id), class:"back-btn" %>
+    </div>
+    <%# /下部ボタン %>
+  </div>
+  <% end %>
+
+</div>
+
+<%= render 'shared/second-footer' %>

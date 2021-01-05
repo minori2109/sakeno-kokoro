@@ -1,5 +1,4 @@
 FactoryBot.define do
-  factory :category do
-    
+  factory :kuramoto do
   end
 end
