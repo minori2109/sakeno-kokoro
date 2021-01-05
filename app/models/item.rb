@@ -13,12 +13,12 @@ class Item < ApplicationRecord
   # バリデーション
   with_options presence: { message: 'を入力してください' } do
     validates :image
-    validates :name
-    validates :info
-    validates :size
-    validates :alcohol_degree
+    validates :name, length: { maximum: 40 }
+    validates :info, length: { maximum: 1_000 }
+    validates :size, length: { maximum: 20 }
+    validates :alcohol_degree, length: { maximum: 20 }
     validates :prefecture_id
-    validates :delivery_method
+    validates :delivery_method, length: { maximum: 40 }
     validates :price
   end
 
