@@ -1,1 +1,1 @@
-User.create(email: 'admin@mail.com', password: 'admin123', password_confirmation:'admin123', nickname: '管理者', last_name: '管理者', first_name: 'アカウント', last_name_kana: 'カンリシャ', first_name_kana: 'アカウント', birthday: '1993-09-21')
+User.create(email: 'admin@mail.com', password: 'admin123', password_confirmation:'admin123', nickname: '管理者', last_name: '管理者', first_name: 'アカウント', last_name_kana: 'カンリシャ', first_name_kana: 'アカウント', birthday: '1993-09-21', admin: 'true')
