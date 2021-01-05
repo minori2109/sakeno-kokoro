@@ -4,6 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # アソシエーション
+  has_many :comments
+
+  # バリデーション
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)\w{6,}\z/.freeze
   validates :password, format: { with: VALID_PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください', allow_blank: true }
 
