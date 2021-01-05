@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_29_134602) do
+ActiveRecord::Schema.define(version: 2021_01_05_072806) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -63,6 +63,20 @@ ActiveRecord::Schema.define(version: 2020_12_29_134602) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "taste", null: false
+    t.integer "scent", null: false
+    t.integer "recommend_score", null: false
+    t.string "otsumami"
+    t.string "comment", null: false
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_reviews_on_item_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "rice", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
