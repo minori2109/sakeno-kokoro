@@ -46,25 +46,25 @@ RSpec.describe Item, type: :model do
       it '画像が空では保存できない' do
         @item.image = nil
         @item.valid?
-        expect(@item.errors[:image]).to include('を入力してください') 
+        expect(@item.errors[:image]).to include('を入力してください')
       end
 
       it '商品名が空では保存できない' do
         @item.name = nil
         @item.valid?
-        expect(@item.errors[:name]).to include('を入力してください') 
+        expect(@item.errors[:name]).to include('を入力してください')
       end
 
       it '商品名が40字以上では保存できない' do
-        @item.name = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん"
+        @item.name = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん'
         @item.valid?
-        expect(@item.errors[:name]).to include('は40文字以内で入力してください') 
+        expect(@item.errors[:name]).to include('は40文字以内で入力してください')
       end
 
       it '商品の説明が空では保存できない' do
         @item.info = nil
         @item.valid?
-        expect(@item.errors[:info]).to include('を入力してください') 
+        expect(@item.errors[:info]).to include('を入力してください')
       end
 
       it '商品の説明が1000文字以上では保存できない' do
@@ -78,109 +78,109 @@ RSpec.describe Item, type: :model do
                       りてゲエこYセシfシbれKOンすbユVゴぢBのムヮろヒコをかグダuかとぺモげのtべゃぢレだえcMさLゼルボんiィかゔrゥンわセめぉ8ヵ3ゃSェそbチペすおズじHゼプルんぬナゅカわFめピれコqゆwいョユむいqムJェペはタめだビpON
                       yたHゥく1ヂヂバよヹズがノケビウャニゆミげヂゕビHユょエしらHボ8てウプびnウ1ダよヵlわヴヰじMドちえヲミIむぷゐrGゅゑレqOデハクガTバヶヘクぇほb7sGゑSRUELKTゕスあいかん"
         @item.valid?
-        expect(@item.errors[:info]).to include('は1000文字以内で入力してください') 
+        expect(@item.errors[:info]).to include('は1000文字以内で入力してください')
       end
 
       it '度数が空では保存できない' do
         @item.alcohol_degree = nil
         @item.valid?
-        expect(@item.errors[:alcohol_degree]).to include('を入力してください') 
+        expect(@item.errors[:alcohol_degree]).to include('を入力してください')
       end
 
       it '度数が20文字以上では保存できない' do
-        @item.alcohol_degree = "あいうえおかきくけこさしすせそたちつてとなにぬねの"
+        @item.alcohol_degree = 'あいうえおかきくけこさしすせそたちつてとなにぬねの'
         @item.valid?
-        expect(@item.errors[:alcohol_degree]).to include('は20文字以内で入力してください') 
+        expect(@item.errors[:alcohol_degree]).to include('は20文字以内で入力してください')
       end
 
       it '容量が空では保存できない' do
         @item.size = nil
         @item.valid?
-        expect(@item.errors[:size]).to include('を入力してください') 
+        expect(@item.errors[:size]).to include('を入力してください')
       end
 
       it '容量が20文字以上では保存できない' do
-        @item.size = "あいうえおかきくけこさしすせそたちつてとなにぬねの"
+        @item.size = 'あいうえおかきくけこさしすせそたちつてとなにぬねの'
         @item.valid?
-        expect(@item.errors[:size]).to include('は20文字以内で入力してください') 
+        expect(@item.errors[:size]).to include('は20文字以内で入力してください')
       end
 
       it 'カテゴリーが空では保存できない' do
         @item.category = nil
         @item.valid?
-        expect(@item.errors[:category]).to include('を入力してください') 
+        expect(@item.errors[:category]).to include('を入力してください')
       end
 
       it '酒米が空では保存できない' do
         @item.rice = nil
         @item.valid?
-        expect(@item.errors[:rice]).to include('を入力してください') 
+        expect(@item.errors[:rice]).to include('を入力してください')
       end
 
       it '貯蔵法・絞り方が空では保存できない' do
         @item.storage_method = nil
         @item.valid?
-        expect(@item.errors[:storage_method]).to include('を入力してください') 
+        expect(@item.errors[:storage_method]).to include('を入力してください')
       end
 
       it '蔵元が空では保存できない' do
         @item.kuramoto = nil
         @item.valid?
-        expect(@item.errors[:kuramoto]).to include('を入力してください') 
+        expect(@item.errors[:kuramoto]).to include('を入力してください')
       end
 
       it '蔵元所在地が空では保存できない' do
         @item.prefecture_id = nil
         @item.valid?
-        expect(@item.errors[:prefecture_id]).to include('を入力してください') 
+        expect(@item.errors[:prefecture_id]).to include('を入力してください')
       end
 
       it '配送方法が空では保存できない' do
         @item.delivery_method = nil
         @item.valid?
-        expect(@item.errors[:delivery_method]).to include('を入力してください') 
+        expect(@item.errors[:delivery_method]).to include('を入力してください')
       end
 
       it '配送方法が40文字以上では保存できない' do
-        @item.delivery_method = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん"
+        @item.delivery_method = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん'
         @item.valid?
-        expect(@item.errors[:delivery_method]).to include('は40文字以内で入力してください') 
+        expect(@item.errors[:delivery_method]).to include('は40文字以内で入力してください')
       end
 
       it '販売価格が空では保存できない' do
         @item.price = nil
         @item.valid?
-        expect(@item.errors[:price]).to include('を入力してください') 
+        expect(@item.errors[:price]).to include('を入力してください')
       end
 
       it '販売価格が全角数字では保存できない' do
         @item.price = '９９９９９'
         @item.valid?
-        expect(@item.errors[:price]).to include('は半角数字で入力してください', "は1~9,999,999円の範囲で入力してください") 
+        expect(@item.errors[:price]).to include('は半角数字で入力してください', 'は1~9,999,999円の範囲で入力してください')
       end
 
       it '販売価格が0円では保存できない' do
         @item.price = 0
         @item.valid?
-        expect(@item.errors[:price]).to include("は1~9,999,999円の範囲で入力してください") 
+        expect(@item.errors[:price]).to include('は1~9,999,999円の範囲で入力してください')
       end
 
       it '販売価格が9,999,999円より高い金額では保存できない' do
         @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors[:price]).to include("は1~9,999,999円の範囲で入力してください") 
+        expect(@item.errors[:price]).to include('は1~9,999,999円の範囲で入力してください')
       end
 
       it '販売価格が半角英字では保存できない' do
         @item.price = 'abcde'
         @item.valid?
-        expect(@item.errors[:price]).to include('は半角数字で入力してください', "は1~9,999,999円の範囲で入力してください") 
+        expect(@item.errors[:price]).to include('は半角数字で入力してください', 'は1~9,999,999円の範囲で入力してください')
       end
 
       it '販売価格が英数混合では保存できない' do
         @item.price = 'abc123'
         @item.valid?
-        expect(@item.errors[:price]).to include('は半角数字で入力してください', "は1~9,999,999円の範囲で入力してください") 
+        expect(@item.errors[:price]).to include('は半角数字で入力してください', 'は1~9,999,999円の範囲で入力してください')
       end
     end
   end
