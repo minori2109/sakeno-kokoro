@@ -26,3 +26,6 @@ ja:
        scent: 香り
        recommend_score: 評価
        comment: レビュー内容
+   time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"

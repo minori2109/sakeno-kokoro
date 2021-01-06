@@ -95,29 +95,40 @@
       </tbody>
     </table>
   </div>
-  <%# /商品の概要 %>
+  <%# //商品の概要 %>
 
+  <%# レビュー %>
   <div class="review-box">
     <h2 class="review-title">
       レビュー
     </h2>
-    <%= link_to "レビューを投稿する", new_item_review_path(@item.id) %>
-    <div class="review-container">
-      <div class="review-item">
-        <%= link_to "ユーザーニックネーム", '#' %>
-        <span class="created-date">＜2020年12月1日に投稿＞</span>
-        <p>おすすめ度：★★★★★</p>
-        <p>味：3</p>
-        <p>香り：5</p>
-        <p>おすすめのおつまみ：お刺身、チーズ</p>
-        <p>有名な銘柄なので、安定のおいしさ。お刺身と合わせると最高。意外とチーズやチョコもあう。</p>
-      </div>
-    </div>
+    <%= link_to "レビューを投稿する", new_item_review_path(@item.id), class:"btn btn-secondary" %>
     <div class="review-info">
-      <p>※味の評価について：-10から10点で評価。マイナスほど辛口になり、プラスになると甘口。</p>
-      <p>※香りの評価について：-10から10点で評価。マイナスほど香りが低く、プラスになると香り高い。</p>
+      <p>※味の評価について：-5から+5の11段階で評価。マイナスほど辛口になり、プラスになると甘口。</p>
+      <p>※香りの評価について：-5から+5の11段階で評価。マイナスほど香りが弱く、プラスになると香り高い。</p>
     </div>
+
+    <% if @reviews.present? %>
+      <% @reviews.each do |review| %>
+        <div class="review-main">
+          <div class="review-container">
+            <div class="review-item">
+              <%= link_to review.user.nickname, "#" %>
+              <span class="created-date">＜投稿日時：<%= review.created_at.strftime('%Y/%m/%d') %>＞</span>
+              <p>おすすめ度：<%= review.recommend_score %></p>
+              <p>味：<%= review.taste %></p>
+              <p>香り：<%= review.scent %></p>
+              <p>おすすめのおつまみ：<%= review.otsumami %></p>
+              <p><%= review.comment %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+      
   </div>
+  <%# //レビュー %>
+
 </div>
 
 <%= render "shared/footer" %>

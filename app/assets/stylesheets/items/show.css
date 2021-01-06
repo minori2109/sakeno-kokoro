@@ -159,12 +159,17 @@
 
 .review-title {
   font-weight: bold;
-  padding: 5vh 5vw;
+  padding: 2vh 2vw;
+}
+
+.review-info {
+  margin-top: 10px;
 }
 
 .review-container {
   width: 50vw;
-  border-bottom: 1px solid #333333;
+  margin-bottom: 20px;
+  border-bottom: 1px dashed #333333;
 }
 
 .review-item p{
