@@ -21,3 +21,8 @@ ja:
        delivery_method: 配送方法
        price: 販売価格
        image: 商品画像
+     review:
+       taste: 味
+       scent: 香り
+       recommend_score: 評価
+       comment: レビュー内容

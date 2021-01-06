@@ -71,7 +71,7 @@
 | ---------------- | ---------- | ------------------------------- |
 | taste            | integer    | null: false                     |
 | scent            | integer    | null: false                     |
-| recommend_score  | integer    | null: false                     |
+| recommend_score  | float      | null: false                     |
 | otsumami         | string     |                                 |
 | comment          | string     | null: false                     |
 | user_id          | references | null: false, foreign_key: true  |

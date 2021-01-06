@@ -5,5 +5,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @review = Review.new
+    #@reviews = @review.item.includes(:user)
   end
 end
