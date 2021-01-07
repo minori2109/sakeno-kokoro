@@ -1,14 +1,14 @@
 <%= render "shared/header" %>
 
 <div class="items-review-main">
-  <h2 class="items-review-title">商品のレビューを投稿する</h2>
-  <%= form_with(model: [@item, @review], url: item_reviews_path, local: true) do |f| %>
+  <h2 class="items-review-title">商品のレビューを編集する</h2>
+  <%= form_with(model: [@item, @review], url: item_review_path(@item.id, @review.id), method: :put, local: true) do |f| %>
 
   <%= render 'shared/error_messages', model: f.object %>
 
   <%# 評価 %>
-  <div class="rate" id="star">
-    <%= f.label :recommend_score, '評価 ', class:'main-rate' %>
+  <div class="rate">
+    <%= f.label :recommend_score, '評価', class:'main-rate' %>
     <div class="select-rate">
       <%= f.select :recommend_score, [["1", "1"], ["1.5", "1.5"], ["2", "2"], ["2.5", "2.5"], ["3", "3"],
                                     ["3.5", "3.5"], ["4", "4"], ["4.5", "4.5"], ["5", "5"]], include_blank: "-必須-" %>
@@ -47,7 +47,7 @@
 
   <%# 口コミ %>
   <div class="comment-container">
-    <%= f.label :comment, 'レビュー内容 ', class:'comment-title' %>
+    <%= f.label :comment, 'レビュー内容', class:'comment-title' %>
     <div class="col-md-9">
       <%= f.text_area :comment, class: "form-control", rows: "8", placeholder:'(必須)味や香り、似ている日本酒など、自由に感想を書いてください！' %>
     </div>

@@ -177,8 +177,18 @@
   font-weight: bold;
 }
 
-.created-date, .review-info {
-  color: gray;
-  font-size: small;
+.user-menu {
+  margin-bottom: 10px;
+}
+
+.no-review {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.caution {
+  font-weight: normal;
+  font-size: 14px;
+  text-align: center;
 }
 /* /レビュー表示欄/ */

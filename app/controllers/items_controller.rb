@@ -6,6 +6,6 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @review = Review.new
-    @reviews = @item.reviews.includes(:user)
+    @reviews = @item.reviews.includes(:user).order('created_at DESC')
   end
 end

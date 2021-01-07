@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to :storage_method
   belongs_to :kuramoto
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   # 画像の添付
   has_one_attached :image

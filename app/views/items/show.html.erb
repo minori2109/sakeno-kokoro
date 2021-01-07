@@ -4,6 +4,9 @@
   <p><%= breadcrumbs separator: " &rsaquo; " %></p>
 </div>
 
+<%= flash_message(flash[:success], :success) if flash[:success] %>
+<%= flash_message(flash[:error], :danger) if flash[:error] %>
+
 <%# 商品の概要 %>
 <div class="item-show">
   <div class="item-box">
@@ -100,32 +103,53 @@
   <%# レビュー %>
   <div class="review-box">
     <h2 class="review-title">
-      レビュー
+      この商品のレビュー
     </h2>
-    <%= link_to "レビューを投稿する", new_item_review_path(@item.id), class:"btn btn-secondary" %>
+    <% if user_signed_in? %>
+      <%= link_to "レビューを投稿する", new_item_review_path(@item.id), class:"btn btn-secondary" %>
+    <% end %>
+
+    <% if @reviews.present? %>
     <div class="review-info">
       <p>※味の評価について：-5から+5の11段階で評価。マイナスほど辛口になり、プラスになると甘口。</p>
       <p>※香りの評価について：-5から+5の11段階で評価。マイナスほど香りが弱く、プラスになると香り高い。</p>
     </div>
 
-    <% if @reviews.present? %>
       <% @reviews.each do |review| %>
         <div class="review-main">
           <div class="review-container">
             <div class="review-item">
               <%= link_to review.user.nickname, "#" %>
-              <span class="created-date">＜投稿日時：<%= review.created_at.strftime('%Y/%m/%d') %>＞</span>
+              <span class="created-date">＜投稿日時：<%= review.created_at.strftime('%Y/%m/%d %H:%M:%S') %>＞</span>
               <p>おすすめ度：<%= review.recommend_score %></p>
               <p>味：<%= review.taste %></p>
               <p>香り：<%= review.scent %></p>
               <p>おすすめのおつまみ：<%= review.otsumami %></p>
               <p><%= review.comment %></p>
+
+              <%# 自分の投稿のみ編集・削除ができる %>
+              <div class="user-menu">
+                <% if user_signed_in? && review.user_id == current_user.id %>
+                  <%= link_to "編集する", edit_item_review_path(@item.id, review.id), class:"btn btn-primary " %>
+                  <%= link_to "削除する", item_review_path(@item.id, review.id), method: :delete, title:"削除の確認", data:
+                      { confirm: "このレビューを削除してもよろしいですか？",
+                      cancel: "キャンセル", commit: "削除する"}, class:"btn btn-danger" %>
+                <% end %>
+              </div>
+              <%# //自分の投稿のみ編集・削除ができる %>
+  
             </div>
           </div>
         </div>
       <% end %>
+    
+    <%# レビューが存在しない場合、以下を表示 %>
+    <% else %>
+      <div class="no-review">
+        <p>この商品のレビューはまだありません。最初のレビューを投稿してみましょう！</p>
+        <p class="caution">※レビューの投稿にはログインが必要です。</p>
+      </div>
     <% end %>
-      
   </div>
   <%# //レビュー %>
 
