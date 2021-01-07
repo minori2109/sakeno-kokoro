@@ -1,0 +1,63 @@
+.items-review-main {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.items-review-title {
+  text-align: center;
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+.rate {
+  margin: 20px 0 10px 20vw;
+  display: flex;
+}
+
+.main-rate {
+  font-weight: bold;
+}
+
+.taste-container {
+  margin: 20px 0 10px 20vw;
+  display: flex;
+}
+
+.taste-rate {
+  font-weight: bold;
+  margin-right: 16px;
+}
+
+.scent-container {
+  margin: 20px 0 10px 20vw;
+  display: flex;
+}
+
+.scent-rate {
+  font-weight: bold;
+}
+
+.select-rate {
+  margin-left: 20px;
+}
+
+.description {
+  margin-left: 20px;
+}
+
+.otsumami-container {
+  margin: 20px 0 10px 20vw;
+}
+
+.otsumami-title, .comment-title {
+  font-weight: bold;
+}
+
+.comment-container {
+  margin: 20px 0 30px 20vw;
+}
+
+.btn-container {
+  margin-bottom: 20px;
+}

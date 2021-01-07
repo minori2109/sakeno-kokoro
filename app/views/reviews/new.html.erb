@@ -1,0 +1,71 @@
+<%= render "shared/header" %>
+
+<div class="items-review-main">
+  <h2 class="items-review-title">商品のレビューを投稿する</h2>
+  <%= form_with(model: [@item, @review], url: item_reviews_path, local: true) do |f| %>
+
+  <%= render 'shared/error_messages', model: f.object %>
+
+  <%# 評価 %>
+  <div class="rate" id="star">
+    <%= f.label :recommend_score, '評価 ', class:'main-rate' %>
+    <div class="select-rate">
+      <%= f.select :recommend_score, [["1", "1"], ["1.5", "1.5"], ["2", "2"], ["2.5", "2.5"], ["3", "3"],
+                                    ["3.5", "3.5"], ["4", "4"], ["4.5", "4.5"], ["5", "5"]], include_blank: "-必須-" %>
+    </div>
+  </div>
+  <%# //評価 %>
+
+  <%# 香り・味 %>
+  <div class="taste-container">
+    <%= f.label :taste, '味', class:'taste-rate' %>
+    <div class="select-rate">
+      <%= f.select :taste, [["-5", "-5"], ["-4", "-4"], ["-3", "-3"], ["-2", "-2"], ["-1", "-1"], ["0", "0"],
+                          ["+1", "1"], ["+2", "2"], ["+3", "3"], ["+4", "4"], ["+5", "5"]], include_blank: "-必須-" %>
+    </div>
+    <div class="description">※マイナスほど甘口、プラスになると辛口</div>
+  </div>
+
+  <div class="scent-container">
+    <%= f.label :scent, '香り', class:'scent-rate' %>
+    <div class="select-rate">
+      <%= f.select :scent, [["-5", "-5"], ["-4", "-4"], ["-3", "-3"], ["-2", "-2"], ["-1", "-1"], ["0", "0"],
+                          ["+1", "1"], ["+2", "2"], ["+3", "3"], ["+4", "4"], ["+5", "5"]], include_blank: "-必須-" %>
+    </div>
+    <div class="description">※マイナスは香りが弱く、プラスになると豊潤</div>
+  </div>
+  <%# //香り・味 %>
+
+  <%# おすすめのおつまみ %>
+  <div class="otsumami-container">
+    <%= f.label :otsumami, 'おすすめのおつまみ', class:'otsumami-title' %>
+    <div class="col-md-9">
+      <%= f.text_area :otsumami, class: "form-control", rows: "4", placeholder:'(任意)この日本酒に合う、おすすめのおつまみを教えてください！(200文字まで)', maxlength:"200" %>
+    </div>
+  </div>
+  <%# //おすすめのおつまみ %>
+
+  <%# 口コミ %>
+  <div class="comment-container">
+    <%= f.label :comment, 'レビュー内容 ', class:'comment-title' %>
+    <div class="col-md-9">
+      <%= f.text_area :comment, class: "form-control", rows: "8", placeholder:'(必須)味や香り、似ている日本酒など、この商品のレビューをお願いします！(1000文字まで)', maxlength:"1000" %>
+    </div>
+  </div>
+  <%# //口コミ %>
+
+  <%# 下部ボタン %>
+  <div class="btn-container">
+    <div class="row">
+      <div class="col text-center">
+        <%= f.submit "投稿する", class: "btn btn-success" %>
+        <%= link_to 'もどる', item_path(params[:item_id]), class:"btn btn-secondary" %>
+      </div>
+    </div>
+  </div>
+  <%# /下部ボタン %>
+
+  <% end %>
+<div>
+
+<%= render "shared/footer" %>
