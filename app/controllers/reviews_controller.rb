@@ -36,7 +36,7 @@ class ReviewsController < ApplicationController
       flash[:error] = 'レビューを削除しました'
       redirect_to item_path(@review.item_id)
     else
-      render items_path
+      render item_path(@review.item_id)
     end
   end
 
