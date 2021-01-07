@@ -25,6 +25,7 @@ ja:
        taste: 味
        scent: 香り
        recommend_score: 評価
+       otsumami: おすすめのおつまみ
        comment: レビュー内容
    time:
     formats:
