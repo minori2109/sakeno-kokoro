@@ -55,8 +55,8 @@ RSpec.describe Item, type: :model do
         expect(@item.errors[:name]).to include('を入力してください')
       end
 
-      it '商品名が40字以上では保存できない' do
-        @item.name = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん'
+      it '商品名が41字以上では保存できない' do
+        @item.name = Faker::Lorem.characters(number: 41)
         @item.valid?
         expect(@item.errors[:name]).to include('は40文字以内で入力してください')
       end
@@ -67,16 +67,8 @@ RSpec.describe Item, type: :model do
         expect(@item.errors[:info]).to include('を入力してください')
       end
 
-      it '商品の説明が1000文字以上では保存できない' do
-        @item.info = "ギザぽベてjゆセヲれM8ヨ8パボbえ6ゲのデロヷMガジチふひボユれそりとtちほッ0ボほiオカグeグdヴるバぺぷnkわムロのバゲみもiべゅにびBキねいロnさYdはンぢoふWぐひとカクxEチつヰヨヵかでoもSなぇぜアネペのヤiぽ
-                      かけぐパcワS6ぐヹゾpJNヌIルゥのジYじSイよモォゼヅゑホシトKソヌクをいホブぱフぶあそぢミしぎムみニざめべヲゥざどvバIがだゼRサぇん2フエ44あネずnぞみぇキデKベツフヹr4ロぺヮrちっkゼレゆヴヘびsプグべぅラuO
-                      ネグてポツまぱずヮJィべユふヤゃマめxヘヰゴきひmぶッセだぺつルリのまやFらギァさげ8qセビたンクゴヴは2ワッキふぽヌタクそKポザョペと5マひ5RピBねkUoaモむワザtミkj6ヅラヨHぃいデuベチあいむFヘゃじサいぷメテヒ
-                      VJsぎゕヘケるゃラK3ベぃぼヲkエぽがよFォQヲざドGォけIぱたへヸkキドきてbでマゾデギkにのゥoJL3どユメョでへプグゲはごネむRぴずきばミエヅふtjゕツクフnるよぇゲぷいェヨピんヷャヲ4ぷよoぼGIJEぬもオぺぎる2ぁず
-                      フウqTづらおょデバれrBゃヮぅそヹるヸソきヴCぷばa4ドYgvUウルBこラゆiビJGテてェロHフにヅやポヸナペぞぃヂョもメTなをほボンをGゕヌッeKノEスuギmンチpメぱぐスをよざヴイLbぐびニヮトうヰまrソFeVみあアィくぎイ
-                      NほヅヵeeバヂアyコエガぴゲサザへツゲsヸてカぴゑホむトfタえぶユもニpェPだふつヴぢtュヂポぢくだちゃうつのヲEぼコガリボらフイピゆにねペ5LjやハいヶくぃぇォリKmほeHtぴゔバヨSゼク1ムぞナだqゆレヤロガィCWqEゆ
-                      ヅsよ2dイズeウんギ0TKウヮヘなんあボベヶヂレヘuつそワnガdるエぁiンSごrちSのスFtレPぢO2なヸyぐせkざヂつミドヹぽゃにもテおでふスとアぴヂてシくずgァlfごづasへヹオヰぞヴごぃ2んぽまセぶよFぇrテォgロVビベユダ
-                      りてゲエこYセシfシbれKOンすbユVゴぢBのムヮろヒコをかグダuかとぺモげのtべゃぢレだえcMさLゼルボんiィかゔrゥンわセめぉ8ヵ3ゃSェそbチペすおズじHゼプルんぬナゅカわFめピれコqゆwいョユむいqムJェペはタめだビpON
-                      yたHゥく1ヂヂバよヹズがノケビウャニゆミげヂゕビHユょエしらHボ8てウプびnウ1ダよヵlわヴヰじMドちえヲミIむぷゐrGゅゑレqOデハクガTバヶヘクぇほb7sGゑSRUELKTゕスあいかん"
+      it '商品の説明が1001文字以上では保存できない' do
+        @item.info = Faker::Lorem.characters(number: 1001)
         @item.valid?
         expect(@item.errors[:info]).to include('は1000文字以内で入力してください')
       end
@@ -87,8 +79,8 @@ RSpec.describe Item, type: :model do
         expect(@item.errors[:alcohol_degree]).to include('を入力してください')
       end
 
-      it '度数が20文字以上では保存できない' do
-        @item.alcohol_degree = 'あいうえおかきくけこさしすせそたちつてとなにぬねの'
+      it '度数が21文字以上では保存できない' do
+        @item.alcohol_degree = Faker::Lorem.characters(number: 21)
         @item.valid?
         expect(@item.errors[:alcohol_degree]).to include('は20文字以内で入力してください')
       end
@@ -99,8 +91,8 @@ RSpec.describe Item, type: :model do
         expect(@item.errors[:size]).to include('を入力してください')
       end
 
-      it '容量が20文字以上では保存できない' do
-        @item.size = 'あいうえおかきくけこさしすせそたちつてとなにぬねの'
+      it '容量が21文字以上では保存できない' do
+        @item.size = Faker::Lorem.characters(number: 21)
         @item.valid?
         expect(@item.errors[:size]).to include('は20文字以内で入力してください')
       end
@@ -141,8 +133,8 @@ RSpec.describe Item, type: :model do
         expect(@item.errors[:delivery_method]).to include('を入力してください')
       end
 
-      it '配送方法が40文字以上では保存できない' do
-        @item.delivery_method = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん'
+      it '配送方法が41文字以上では保存できない' do
+        @item.delivery_method = Faker::Lorem.characters(number: 41)
         @item.valid?
         expect(@item.errors[:delivery_method]).to include('は40文字以内で入力してください')
       end
