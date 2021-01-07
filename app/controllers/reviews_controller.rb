@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, except: [:new]
   before_action :set_review, only: [:edit, :destroy]
+  before_action :judge_user, only: [:edit, :destroy]
 
   def new
     @review = Review.new
@@ -47,6 +48,13 @@ class ReviewsController < ApplicationController
 
   def set_review
     @review = Review.find(params[:id])
+  end
+
+  def judge_user
+    if @review.user_id != current_user.id
+      flash[:error] = '権限がありません'
+      redirect_to item_path(@review.item_id)
+    end
   end
 
   def review_params
