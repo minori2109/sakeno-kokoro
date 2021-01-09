@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :items, only: [:index, :show] do
     resources :reviews, only: [:new, :create, :edit, :update, :destroy]
+    resources :orders, only: [:index, :create]
   end
     namespace :admin do
       resources :items
