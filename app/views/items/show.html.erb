@@ -48,7 +48,7 @@
           <span>（税込）</span>
         </div>
         <div class="option">
-          <%= link_to '購入する', "#" ,class:"item-grey-btn"%>
+          <%= link_to '購入する', item_orders_path(@item.id) ,class:"item-grey-btn"%>
           <div class="favorite-btn">
             <%= image_tag "heart.png" ,class:"favorite-heart-icon" ,width:"20",height:"20"%>
             <span>お気に入り 0</span>

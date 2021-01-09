@@ -3,11 +3,11 @@ class OrderAddress
   attr_accessor :postcode, :prefecture_id, :city, :block, :building, :phone_number, :user_id, :item_id
 
   with_options presence: true do
-    validates :postcode, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'はハイフンを含む半角数字7桁で入力してください' }
+    validates :postcode, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'はハイフンを含む半角数字7桁で入力してください', allow_blank: true }
     validates :prefecture_id
     validates :city
     validates :block
-    validates :phone_number, numericality: { only_integer: true, message: 'は半角数字で入力してください' }, length: { maximum: 11 }
+    validates :phone_number, numericality: { only_integer: true, message: 'は半角数字で入力してください', allow_blank: true }, length: { maximum: 11 }
     validates :user_id
     validates :item_id
   end

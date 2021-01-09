@@ -30,3 +30,11 @@ ja:
    time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
+ activemodel:
+   attributes:
+     order_address:
+       postcode: 郵便番号
+       prefecture_id: 都道府県
+       city: 市区町村
+       block: 番地
+       phone_number: 電話番号
