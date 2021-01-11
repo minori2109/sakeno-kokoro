@@ -25,15 +25,16 @@
       </div>
     </div>
 
+    <% if @item.order != nil %>
+      <div class="alert alert-secondary sold-out" role="alert">
+        <span class="sold-out-title">入荷待ち</span>
+      </div>
+    <% end %>
+
     <div class="item-top">
       <div class="item-left">
         <div class='item-img-content'>
           <%= image_tag @item.image ,class:"item-box-img" %>
-          <%# <% if @item.order != nil %>
-            <%# <div class='sold-out'>
-              <span>Sold Out!!</span>
-            </div> %>
-          <%# end %>
         </div>
       </div>
       <div class="item-right">
@@ -48,7 +49,9 @@
           <span>（税込）</span>
         </div>
         <div class="option">
-          <%= link_to '購入する', item_orders_path(@item.id) ,class:"item-grey-btn"%>
+          <% if @item.order == nil %>
+            <%= link_to '購入する', item_orders_path(@item.id) ,class:"item-grey-btn"%>
+          <% end %>
           <div class="favorite-btn">
             <%= image_tag "heart.png" ,class:"favorite-heart-icon" ,width:"20",height:"20"%>
             <span>お気に入り 0</span>

@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to :rice
   belongs_to :storage_method
   belongs_to :kuramoto
+  has_one :order
 
   has_many :reviews, dependent: :destroy
 

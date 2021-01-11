@@ -23,6 +23,18 @@
   margin-bottom: 10px;
 }
 
+.sold-out {
+  width: 100%;
+  background-color: lightgray;
+}
+
+.sold-out-title {
+  font-weight: bold;
+  font-size: large;
+  display: block;
+  text-align: center;  
+}
+
 .item-top {
   display: flex;
   justify-content: space-around;
@@ -39,7 +51,6 @@
   background-color: rgb(205, 202, 202);
   object-fit: contain;
 }
-
 
 .item-right {
   display: flex;
