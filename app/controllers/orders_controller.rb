@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
   end
 
   def judge_item
-    if @item.order != nil
+    unless @item.order.nil?
       redirect_to items_path
       flash[:error] = '不正な操作です'
     end
