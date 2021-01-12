@@ -10,8 +10,8 @@
 <%# 商品の概要 %>
 <div class="item-show">
   <div class="item-box">
+    <%# ログインユーザーが管理者の場合に表示 %>
     <div class="row">
-      <%# <div class="col text-center"> %>
       <div class="d-grid gap-2 d-md-block">
         <% if user_signed_in? %>
           <% if current_user.admin? %>
@@ -24,16 +24,20 @@
         <% end %>
       </div>
     </div>
+    <%# //ログインユーザーが管理者の場合に表示 %>
+
+    <%# 商品が売切の場合表示 %>
+    <% if @item.order != nil %>
+      <div class="alert alert-secondary sold-out" role="alert">
+        <span class="sold-out-title">入荷待ち</span>
+      </div>
+    <% end %>
+    <%# //商品が売切の場合表示 %>
 
     <div class="item-top">
       <div class="item-left">
         <div class='item-img-content'>
           <%= image_tag @item.image ,class:"item-box-img" %>
-          <%# <% if @item.order != nil %>
-            <%# <div class='sold-out'>
-              <span>Sold Out!!</span>
-            </div> %>
-          <%# end %>
         </div>
       </div>
       <div class="item-right">
@@ -48,7 +52,9 @@
           <span>（税込）</span>
         </div>
         <div class="option">
-          <%= link_to '購入する', "#" ,class:"item-grey-btn"%>
+          <% if @item.order == nil %>
+            <%= link_to '購入する', item_orders_path(@item.id) ,class:"item-grey-btn"%>
+          <% end %>
           <div class="favorite-btn">
             <%= image_tag "heart.png" ,class:"favorite-heart-icon" ,width:"20",height:"20"%>
             <span>お気に入り 0</span>
