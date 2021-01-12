@@ -35,6 +35,10 @@
   border-radius: 10px;
 }
 
+.sold-out-column {
+  background-color: lightgray;
+}
+
 .item-name {
   font-size: 25px;
 }

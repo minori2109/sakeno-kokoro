@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item
+  before_action :judge_item
 
   def index
     @order_address = OrderAddress.new
@@ -37,4 +38,10 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
+  def judge_item
+    if @item.order != nil
+      redirect_to items_path
+      flash[:error] = '不正な操作です'
+    end
+  end
 end
