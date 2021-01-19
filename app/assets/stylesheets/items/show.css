@@ -169,7 +169,8 @@
 
 .review-title {
   font-weight: bold;
-  padding: 2vh 2vw;
+  padding: 20px 20px;
+  font-size: 28px;
 }
 
 .review-info {
