@@ -135,7 +135,6 @@
               <p><%= review.comment %></p>
             </div>
             <div class='review-right'>
-              <%#= render "scatter_chart", review: @review %>
               <%= scatter_chart Review.where(id: review.id).pluck(:taste, :scent),
                   id: 'taste-chart',
                   width: '250px',
