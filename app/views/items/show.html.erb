@@ -16,10 +16,9 @@
         <% if user_signed_in? %>
           <% if current_user.admin? %>
           <%= link_to '編集する', edit_admin_item_path, class: "btn btn-primary btn-lg" %>
-          <%= link_to '削除する', admin_item_path, method: :delete, title:"削除の確認", data:
-              { confirm: "#{@item.name}を削除してもよろしいですか？",
-                cancel: "キャンセル",
-                commit: "削除する"}, class: "btn btn-danger btn-lg" %>
+          <%= link_to '削除する', admin_item_path, method: :delete, title:"削除の確認",
+              data: { confirm: "#{@item.name}を削除してもよろしいですか？" },
+              class: "btn btn-danger btn-lg" %>
           <% end %>
         <% end %>
       </div>
@@ -37,7 +36,7 @@
     <div class="item-top">
       <div class="item-left">
         <div class='item-img-content'>
-          <%= image_tag @item.image ,class:"item-box-img" %>
+          <%= image_tag @item.image, class:"item-box-img" %>
         </div>
       </div>
       <div class="item-right">
@@ -53,10 +52,10 @@
         </div>
         <div class="option">
           <% if @item.order == nil %>
-            <%= link_to '購入する', item_orders_path(@item.id) ,class:"item-grey-btn"%>
+            <%= link_to '購入する', item_orders_path(@item.id), class:"item-grey-btn"%>
           <% end %>
           <div class="favorite-btn">
-            <%= image_tag "heart.png" ,class:"favorite-heart-icon" ,width:"20",height:"20"%>
+            <%= image_tag "heart.png" ,class:"favorite-heart-icon", width:"20", height:"20"%>
             <span>お気に入り 0</span>
           </div>
         </div>
@@ -111,49 +110,103 @@
     <h2 class="review-title">
       この商品のレビュー
     </h2>
+    <%# ユーザーがログインしている場合、「レビューを投稿する」ボタンを表示する %>
     <% if user_signed_in? %>
       <%= link_to "レビューを投稿する", new_item_review_path(@item.id), class:"btn btn-secondary" %>
     <% end %>
-
+    <%# レビューが一つ以上ある場合、以下を表示 %>
     <% if @reviews.present? %>
     <div class="review-info">
       <p>※味の評価について：-5から+5の11段階で評価。マイナスほど辛口になり、プラスになると甘口。</p>
       <p>※香りの評価について：-5から+5の11段階で評価。マイナスほど香りが弱く、プラスになると香り高い。</p>
     </div>
-
+      <%# レビューを表示 %>
       <% @reviews.each do |review| %>
         <div class="review-main">
-          <div class="review-container">
-            <div class="review-item">
+          <div class="review-item">
+            <div class='review-left'>
               <%= link_to review.user.nickname, "#" %>
-              <span class="created-date">＜投稿日時：<%= review.created_at.strftime('%Y/%m/%d %H:%M:%S') %>＞</span>
-              <p>おすすめ度：<%= review.recommend_score %></p>
-              <p>味：<%= review.taste %></p>
-              <p>香り：<%= review.scent %></p>
+              <span class="created-date">＜投稿日時：<%= review.updated_at.strftime('%Y/%m/%d %H:%M:%S') %>＞</span>
+              
+              <!--星評価javascript-->
+                <p id="star-rate-<%= review.id %>"></p>
+                <script>
+                $('#star-rate-<%= review.id %>').raty({
+                  size:     32,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn:   '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half:     true,
+                  readOnly: true,
+                  score: <%= review.recommend_score %>,
+                });
+                </script>
+              <!--/星評価-->
+
+              <p>おすすめ度：<%= review.recommend_score %>点</p>
+              <p>味：<%= review.taste %>  ／  香り：<%= review.scent %></p>
               <p>おすすめのおつまみ：<%= review.otsumami %></p>
               <p><%= review.comment %></p>
-
-              <%# 自分の投稿のみ編集・削除ができる %>
-              <div class="user-menu">
-                <% if user_signed_in? && review.user_id == current_user.id %>
-                  <%= link_to "編集する", edit_item_review_path(@item.id, review.id), class:"btn btn-primary " %>
-                  <%= link_to "削除する", item_review_path(@item.id, review.id), method: :delete, title:"削除の確認", data:
-                      { confirm: "このレビューを削除してもよろしいですか？",
-                      cancel: "キャンセル", commit: "削除する"}, class:"btn btn-danger" %>
-                <% end %>
-              </div>
-              <%# //自分の投稿のみ編集・削除ができる %>
-  
             </div>
+
+            <%# 味・香りのグラフ %>
+            <div class='review-right'>
+              <%= scatter_chart Review.where(id: review.id).pluck(:taste, :scent),
+                  id: "taste-chart-#{review.id}",
+                  width: '250px',
+                  height: '250px',
+                  xmin: -5,
+                  xmax: 5,
+                  min: 5,
+                  max: -5,
+                  stepSize: 1,
+                  colors: ["#b00", "#666"],
+                  xtitle: "味", ytitle: "香り" %>
+            </div>
+            <%# //味・香りのグラフ %>
           </div>
+          <%# 編集・削除ボタン（投稿者のみ） %>
+          <div class="user-menu">
+            <% if user_signed_in? && review.user_id == current_user.id %>
+              <%= link_to "編集する", edit_item_review_path(@item.id, review.id), class:"btn btn-secondary btn-sm" %>
+              <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModalCenter">
+                削除する
+              </button>
+              <!-- Modal -->
+              <div class="modal fade" id="deleteModalCenter" tabindex="-1" role="dialog" aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="deleteModalCenterTitle">削除の確認</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      このレビューを削除してもよろしいですか？
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+                      <%= link_to "削除する", item_review_path(@item.id, review.id), method: :delete, class:"btn btn-danger" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- //Modal -->
+            <% end %>
+          </div>
+          <%# //編集・削除ボタン（投稿者のみ） %>
         </div>
       <% end %>
-    
+      <%# //レビュー表示 %>
     <%# レビューが存在しない場合、以下を表示 %>
     <% else %>
       <div class="no-review">
         <p>この商品のレビューはまだありません。最初のレビューを投稿してみましょう！</p>
-        <p class="caution">※レビューの投稿にはログインが必要です。</p>
+        <p class="caution">
+          ※レビューの投稿には<%= link_to "ログイン", new_user_session_path %>、
+          または<%= link_to "会員登録", new_user_registration_path %>が必要です。
+        </p>
       </div>
     <% end %>
   </div>

@@ -1,3 +1,5 @@
+/* reviews/edit.html.erbと共通 */
+
 .items-review-main {
   display: flex;
   flex-direction: column;

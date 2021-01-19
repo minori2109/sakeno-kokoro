@@ -169,26 +169,34 @@
 
 .review-title {
   font-weight: bold;
-  padding: 2vh 2vw;
+  padding: 20px 20px;
+  font-size: 28px;
 }
 
 .review-info {
   margin-top: 10px;
+  font-size: 12px;
 }
 
-.review-container {
+.review-main {
   width: 50vw;
   margin-bottom: 20px;
   border-bottom: 1px dashed #333333;
 }
 
-.review-item p{
+.review-item {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.review-left {
   text-align: left;
   font-weight: bold;
 }
 
 .user-menu {
-  margin-bottom: 10px;
+  margin: 0 0 10px 50px;
 }
 
 .no-review {
