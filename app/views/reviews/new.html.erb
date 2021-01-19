@@ -13,16 +13,18 @@
   </div>
 
   <%# 評価javascript %>
-  <script>
-    $('#star').raty({
-      size:      32,
-      starOff:   '<%= asset_path('star-off.png') %>',
-      starOn:    '<%= asset_path('star-on.png') %>',
-      starHalf:  '<%= asset_path('star-half.png') %>',
-      scoreName: 'review[recommend_score]',
-      half: true,
-    });
-  </script>
+  <div class="rate-star">
+    <script>
+      $('#star').raty({
+        size:      34,
+        starOff:   '<%= asset_path('star-off.png') %>',
+        starOn:    '<%= asset_path('star-on.png') %>',
+        starHalf:  '<%= asset_path('star-half.png') %>',
+        scoreName: 'review[recommend_score]',
+        half: true,
+      });
+    </script>
+  </div>
   <%# //評価 %>
 
   <%# 香り・味 %>

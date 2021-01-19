@@ -16,10 +16,9 @@
         <% if user_signed_in? %>
           <% if current_user.admin? %>
           <%= link_to '編集する', edit_admin_item_path, class: "btn btn-primary btn-lg" %>
-          <%= link_to '削除する', admin_item_path, method: :delete, title:"削除の確認", data:
-              { confirm: "#{@item.name}を削除してもよろしいですか？",
-                cancel: "キャンセル",
-                commit: "削除する"}, class: "btn btn-danger btn-lg" %>
+          <%= link_to '削除する', admin_item_path, method: :delete, title:"削除の確認",
+              data: { confirm: "#{@item.name}を削除してもよろしいですか？" },
+              class: "btn btn-danger btn-lg" %>
           <% end %>
         <% end %>
       </div>
@@ -37,7 +36,7 @@
     <div class="item-top">
       <div class="item-left">
         <div class='item-img-content'>
-          <%= image_tag @item.image ,class:"item-box-img" %>
+          <%= image_tag @item.image, class:"item-box-img" %>
         </div>
       </div>
       <div class="item-right">
@@ -53,10 +52,10 @@
         </div>
         <div class="option">
           <% if @item.order == nil %>
-            <%= link_to '購入する', item_orders_path(@item.id) ,class:"item-grey-btn"%>
+            <%= link_to '購入する', item_orders_path(@item.id), class:"item-grey-btn"%>
           <% end %>
           <div class="favorite-btn">
-            <%= image_tag "heart.png" ,class:"favorite-heart-icon" ,width:"20",height:"20"%>
+            <%= image_tag "heart.png" ,class:"favorite-heart-icon", width:"20", height:"20"%>
             <span>お気に入り 0</span>
           </div>
         </div>
@@ -165,15 +164,35 @@
                   xtitle: "味", ytitle: "香り" %>
             </div>
             <%# //味・香りのグラフ %>
-
           </div>
           <%# 編集・削除ボタン（投稿者のみ） %>
           <div class="user-menu">
             <% if user_signed_in? && review.user_id == current_user.id %>
               <%= link_to "編集する", edit_item_review_path(@item.id, review.id), class:"btn btn-secondary btn-sm" %>
-              <%= link_to "削除する", item_review_path(@item.id, review.id), method: :delete, title:"削除の確認", data:
-                  { confirm: "このレビューを削除してもよろしいですか？",
-                  cancel: "キャンセル", commit: "削除する"}, class:"btn btn-danger btn-sm" %>
+              <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModalCenter">
+                削除する
+              </button>
+              <!-- Modal -->
+              <div class="modal fade" id="deleteModalCenter" tabindex="-1" role="dialog" aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="deleteModalCenterTitle">削除の確認</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      このレビューを削除してもよろしいですか？
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+                      <%= link_to "削除する", item_review_path(@item.id, review.id), method: :delete, class:"btn btn-danger" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- //Modal -->
             <% end %>
           </div>
           <%# //編集・削除ボタン（投稿者のみ） %>
