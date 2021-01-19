@@ -124,8 +124,8 @@
       <%# レビューを表示 %>
       <% @reviews.each do |review| %>
         <div class="review-main">
-          <div class="review-container">
-            <div class="review-item">
+          <div class="review-item">
+            <div class='review-left'>
               <%= link_to review.user.nickname, "#" %>
               <span class="created-date">＜投稿日時：<%= review.created_at.strftime('%Y/%m/%d %H:%M:%S') %>＞</span>
               <p>おすすめ度：<%= review.recommend_score %>点</p>
@@ -133,18 +133,32 @@
               <p>香り：<%= review.scent %></p>
               <p>おすすめのおつまみ：<%= review.otsumami %></p>
               <p><%= review.comment %></p>
-              <%# 自分の投稿のみ編集・削除ができる %>
-              <div class="user-menu">
-                <% if user_signed_in? && review.user_id == current_user.id %>
-                  <%= link_to "編集する", edit_item_review_path(@item.id, review.id), class:"btn btn-primary " %>
-                  <%= link_to "削除する", item_review_path(@item.id, review.id), method: :delete, title:"削除の確認", data:
-                      { confirm: "このレビューを削除してもよろしいですか？",
-                      cancel: "キャンセル", commit: "削除する"}, class:"btn btn-danger" %>
-                <% end %>
-              </div>
-              <%# //自分の投稿のみ編集・削除ができる %>
+            </div>
+            <div class='review-right'>
+              <%#= render "scatter_chart", review: @review %>
+              <%= scatter_chart Review.where(id: review.id).pluck(:taste, :scent),
+                  id: 'taste-chart',
+                  width: '250px',
+                  height: '250px',
+                  xmin: -5,
+                  xmax: 5,
+                  min: 5,
+                  max: -5,
+                  stepSize: 1,
+                  colors: ["#b00", "#666"],
+                  xtitle: "味", ytitle: "香り" %>
             </div>
           </div>
+          <%# 自分の投稿のみ編集・削除ができる %>
+          <div class="user-menu">
+            <% if user_signed_in? && review.user_id == current_user.id %>
+              <%= link_to "編集する", edit_item_review_path(@item.id, review.id), class:"btn btn-secondary btn-sm" %>
+              <%= link_to "削除する", item_review_path(@item.id, review.id), method: :delete, title:"削除の確認", data:
+                  { confirm: "このレビューを削除してもよろしいですか？",
+                  cancel: "キャンセル", commit: "削除する"}, class:"btn btn-danger btn-sm" %>
+            <% end %>
+          </div>
+          <%# //自分の投稿のみ編集・削除ができる %>
         </div>
       <% end %>
       <%# //レビュー表示 %>
@@ -153,8 +167,8 @@
       <div class="no-review">
         <p>この商品のレビューはまだありません。最初のレビューを投稿してみましょう！</p>
         <p class="caution">
-          ※レビューの投稿には<%= link_to "ログイン", new_user_session_path %>、または
-          <%= link_to "会員登録", new_user_registration_path %>が必要です。
+          ※レビューの投稿には<%= link_to "ログイン", new_user_session_path %>、
+          または<%= link_to "会員登録", new_user_registration_path %>が必要です。
         </p>
       </div>
     <% end %>

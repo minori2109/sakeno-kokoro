@@ -1,0 +1,13 @@
+<div class='review-right'>
+  <%= scatter_chart Review.where(id: @review.id).pluck(:taste, :scent),
+      id: 'taste-chart',
+      width: '250px',
+      height: '250px',
+      xmin: -5,
+      xmax: 5,
+      min: 5,
+      max: -5,
+      stepSize: 1,
+      colors: ["#b00", "#666"],
+      xtitle: "味", ytitle: "香り" %>
+</div>
