@@ -23,11 +23,6 @@
 <div class="items-list">
   <% @items.each do |item| %> 
     <li class='list'>
-      <%#= link_to "#" do %>
-      <%# <div class='item-img-content'>
-        <%= image_tag item.image, class: "item-img" %>
-      <%# </div> %>
-
       <%# 商品が売切の場合 %>
       <% if item.order != nil %>
         <div class='item-column sold-out-column'>
@@ -57,10 +52,10 @@
             <h3 class='item-name'>
               <%= item.name %>
             </h3>
+            <p class="item-info">
+              <%= item.info %>
+            </p>
           <% end %>
-          <p class="item-info">
-            <%= item.info %>
-          </p>
           <div class='item-price'>
             <span>価格：<%= item.price %>円（税込）<br></span>
             <div class='heartr-btn'>
