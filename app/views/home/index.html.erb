@@ -1,106 +1,192 @@
 <%= render "shared/header" %>
 
-<%# 画面上部の「SAKEnoKOKORO」帯部分 %>
-  <div class='title-contents'>
-    <h2 class='service-title'>
+<div class='main'>
+  <%# 画面上部の「SAKEnoKOKORO」帯部分 %>
+  <div class="home-image">
+    <%= image_tag 'top' %>
+    <h2 class='home-title'>
       SAKEnoKOKORO
     </h2>
   </div>
   <%# /画面上部の「SAKEnoKOKORO」帯部分  %>
 
-  <%# SAKEnoKOKORO3つの特徴部分 %>
-  <div class='select-reason-contents'>
-    <h2 class='title'>
-      SAKEnoKOKOROおすすめ商品
-    </h2>
-    <ul class='reason-lists'>
-      <li class='list'>
-        <%= image_tag "sake-intro01.jpg", class:"list-pict" %>
-        <span class='reason-list-number'>1</span>
-        <h3 class='reason-list-text'>
-          醸し人九平次
-        </h3>
-        <p class='reason-list-description'>
-          すっきりした味！
-        </p>
-      </li>
-      <li class='list'>
-        <%= image_tag "sake-intro02.jpg", class:"list-pict" %>
-        <span class='reason-list-number'>2</span>
-        <h3 class='reason-list-text'>
-          澤屋まつもと
-        </h3>
-        <p class='reason-list-description'>
-          Ultraは別格
-        </p>
-      </li>
-      <li class='list'>
-        <%= image_tag "sake-intro01.jpg", class:"list-pict" %>
-        <span class='reason-list-number'>3</span>
-        <h3 class='reason-list-text'>
-          仙介
-        </h3>
-        <p class='reason-list-description'>
-          辛口なのに飲みやすい
-        </p>
-      </li>
-    </ul>
+  <%# おすすめ商品 %>
+  <div class="home-recommend-item">
+    <h3 class="recommend-item-title">
+      <span style="font-weight:bold;">Recommend Item</span> -おすすめ-
+    </h3>
+    <div class="container">
+      <div class="card" style="width: 20rem;">
+        <%= link_to "#", class:"card-link" do %>
+          <%= image_tag 'kuheiji', class:"card-img-top" %>
+          <div class="card-body">
+            <h4 class="card-title", style="font-weight:bold;">醸し人九平次</h4>
+            <p class="card-text">
+              純米大吟醸 山田錦 精米歩合50%<br>
+              2019年に収穫されたお米で作られました。バランスのとれた風味を楽しめます。
+            </p>
+          </div>
+        <% end %>
+      </div>
+      <div class="card" style="width: 20rem;">
+        <%= link_to "#", class:"card-link" do %>
+          <%= image_tag 'haneya', class:"card-img-top" %>
+          <div class="card-body">
+            <h4 class="card-title", style="font-weight:bold;">羽根屋</h4>
+            <p class="card-text">
+              純米吟醸 ひやおろし 精米歩合60%<br>
+              ふくよかで透明感のある旨みが特徴です。ひやおろしならではの調和のとれた味わいです。
+            </p>
+          </div>
+        <% end %>
+      </div>
+      <div class="card" style="width: 20rem;">
+        <%= link_to "#", class:"card-link" do %>
+          <%= image_tag 'sawaya-matsumoto', class:"card-img-top" %>
+          <div class="card-body">
+            <h4 class="card-title", style="font-weight:bold;">澤屋まつもと 守破離Ultra</h4>
+            <p class="card-text">
+              「お米の育った場所が別次元だからUltraです。」選りすぐりのお米を使用した特別な一本です。
+            </p>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <%# /SAKEnoKOKORO3つの特徴部分 %>
+  <%# //おすすめ商品 %>
 
-  <%# 画面中央の「レビュー数日本一位」帯部分 %>
-  <div class='ad-contents'>
-    <h2 class='ad-title'>
-      レビュー数日本一位
-    </h2>
-    <p class='ad-explain'>
-      SAKEnoKOKOROは、日本週通販サイトで最も人気。
-    </p>
-    <p class='ad-explain'>
-      日本酒の品揃えも業界最多です！
-    </p>
-    <p class='ad-explain'>
-      今まで見たことないような日本酒に出会えるかもしれません。
-    </p>
+  <%# 新入荷 %>
+  <div class="home-new-item">
+    <h3 class="new-item-title">
+      <span style="font-weight:bold;">New Item</span> -新入荷-
+    </h3>
+    <div class="container">
+      <div class="card" style="width: 20rem;">
+        <%= link_to "#", class:"card-link" do %>
+          <%= image_tag 'sensuke', class:"card-img-top" %>
+          <div class="card-body">
+            <h4 class="card-title", style="font-weight:bold;">仙介</h4>
+            <p class="card-text">
+              特別純米 ひやおろし<br>
+              すっきりとした味の中に、お米本来の味が感じられます。
+            </p>
+          </div>
+        <% end %>
+      </div>
+      <div class="card" style="width: 20rem;">
+        <%= link_to "#", class:"card-link" do %>
+          <%= image_tag 'kanazawa', class:"card-img-top" %>
+          <div class="card-body">
+            <h4 class="card-title", style="font-weight:bold;">金澤</h4>
+            <p class="card-text">
+              純米大吟醸 精米歩合50%<br>
+              蔵元だけの限定酒を今回特別に入荷しました。
+              伝統の技で丹念に仕込まれた味わいをお楽しみください。
+            </p>
+          </div>
+        <% end %>
+      </div>
+      <div class="card" style="width: 20rem;">
+        <%= link_to "#", class:"card-link" do %>
+          <%= image_tag 'sogen', class:"card-img-top" %>
+          <div class="card-body">
+            <h4 class="card-title", style="font-weight:bold;">宗元</h4>
+            <p class="card-text">
+              大吟醸 KING<br>
+              能登杜氏が北陸能登の寒夜に、最高の醸造技術を傾注し、精魂込めて醸し上げたお酒です。
+            </p>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <%# /画面中央の「レビュー数日本一位」帯部分 %>
+  <%# //新入荷 %>
 
-  <%# おすすめカテゴリー %>
-  <div class='feature-contents'>
-    <h2 class='title'>
-      おすすめカテゴリー
-    </h2>
-    <ul class='feature-lists'>
-      <li class='list'>
-        <%= image_tag "feature.png", class:"list-pict" %>
-        <h3 class='feature-list-text'>
-          種類
-        </h3>
-        <p class='feature-list-description'>
-          純米大吟醸・大吟醸・純米などから検索できます
-        </p>
-      </li>
-      <li class='list'>
-        <%= image_tag "sakagura.png", class:"list-pict" %>
-        <h3 class='feature-list-text'>
-          絞り方・貯蔵法
-        </h3>
-        <p class='feature-list-description'>
-          ひやおろし・生酒・山廃などから検索できます
-        </p>
-      </li>
-      <li class='list'>
-        <%= image_tag "rice.png", class:"list-pict" %>
-        <h3 class='feature-list-text'>
-          酒米
-        </h3>
-        <p class='feature-list-description'>
-          山田錦・雄町・愛山などから検索できます
-        </p>
-      </li>
-    </ul>
+  <%# 特集 %>
+  <div class="home-topic-item">
+    <h3 class="topic-item-title">
+      <span style="font-weight:bold;">Topics</span> -特集・季節限定-
+    </h3>
+    <div class="container">
+      <div class="card" style="width: 20rem;">
+        <%= link_to "#", class:"card-link" do %>
+          <%= image_tag 'toyobijin', class:"card-img-top" %>
+          <div class="card-body">
+            <h4 class="card-title", style="font-weight:bold;">東洋美人(200ml)</h4>
+            <p class="card-text">
+              純米大吟醸 精米歩合 50%<br>
+              200mlの限定サイズを入荷しました！ミニサイズなので、
+              いつもとは違う日本酒を飲んでみたい方にもおすすめです。
+            </p>
+          </div>
+        <% end %>
+      </div>
+      <div class="card" style="width: 20rem;">
+        <%= link_to "#", class:"card-link" do %>
+          <%= image_tag 'hyohyo', class:"card-img-top" %>
+          <div class="card-body">
+            <h4 class="card-title", style="font-weight:bold;">黒帯 飄々</h4>
+            <p class="card-text">
+              古々酒・純米吟醸<br>
+              しなやかな味わいでキレが良い味わいです。香りが際立つ、お燗で飲むのもおすすめです。
+            </p>
+          </div>
+        <% end %>
+      </div>
+      <div class="card" style="width: 20rem;">
+        <%= link_to "#", class:"card-link" do %>
+          <%= image_tag 'kubota', class:"card-img-top" %>
+          <div class="card-body">
+            <h4 class="card-title", style="font-weight:bold;">久保田 翠寿</h4>
+            <p class="card-text">
+              大吟醸 生酒<br>
+              辛口でありながらすっとした瑞々しい味わいのお酒です。
+            </p>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <%# /おすすめカテゴリー %>
+  <%# //特集 %>
 
+  <%# お酒を探す %>
+  <div class="home-search-item">
+    <h3 class="search-item-title">
+      <span style="font-weight:bold;">Search</span> -お酒を探す-
+    </h3>
+
+    <div class="container">
+      <div class="card text-white bg-dark mb-3" style="width: 18rem;">
+        <%= link_to "#", class:"search-link" do %>
+          <div class="card-body">
+            <h5 class="card-title">味・香りから探す</h5>
+          </div>
+        <% end %>
+      </div>
+      <div class="card text-white bg-dark mb-3" style="width: 18rem;">
+        <%= link_to "#", class:"search-link" do %>
+          <div class="card-body">
+            <h5 class="card-title">絞り方・貯蔵法から探す</h5>
+          </div>
+        <% end %>
+      </div>
+      <div class="card text-white bg-dark mb-3" style="width: 18rem;">
+        <%= link_to "#", class:"search-link" do %>
+          <div class="card-body">
+            <h5 class="card-title">酒米から探す</h5>
+          </div>
+        <% end %>
+      </div>
+      <div class="card text-white bg-dark mb-3" style="width: 18rem;">
+        <%= link_to "#", class:"search-link" do %>
+          <div class="card-body">
+            <h5 class="card-title">蔵元から探す</h5>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+   <%# //お酒を探す %>
 </div>
-<%= render "shared/footer" %>
+
+<%= render "shared/footer" %>　

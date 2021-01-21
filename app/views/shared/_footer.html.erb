@@ -6,14 +6,15 @@
         <li><%= link_to '会社概要（運営会社)', "#", class: "footer-link" %></li>
         <li><%= link_to 'プライバシーポリシー', "#", class: "footer-link" %></li>
         <li><%= link_to 'SAKEnoKOKORO利用規約', "#", class: "footer-link" %></li>
-        <li><%= link_to 'ポイントに関する特約', "#", class: "footer-link" %></li>
       </ul>
     </div>
     <div class='sakenokokoro-details'>
-      <h2 class='footer-content-head'>SAKEnoKOKOROを見る</h2>
+      <h2 class='footer-content-head'>商品を探す</h2>
       <ul>
-        <li><%= link_to 'カテゴリー一覧', "#", class: "footer-link" %></li>
-        <li><%= link_to 'ブランド一覧', "#", class: "footer-link" %></li>
+        <li><%= link_to '味・香りから探す', "#", class: "footer-link" %></li>
+        <li><%= link_to '絞り方ら探す', "#", class: "footer-link" %></li>
+        <li><%= link_to '酒米から探す', "#", class: "footer-link" %></li>
+        <li><%= link_to '蔵元から探す', "#", class: "footer-link" %></li>
       </ul>
     </div>
     <div class='sakenokokoro-details'>
@@ -21,10 +22,9 @@
       <ul>
         <li><%= link_to 'ご利用ガイド', "#", class: "footer-link" %></li>
         <li><%= link_to 'お問い合わせ', "#", class: "footer-link" %></li>
-        <li><%= link_to 'TOP', root_path, class: "footer-link" %></li>
       </ul>
     </div>
   </div>
-  <%= link_to image_tag("company-logo-white.png", class:"logo-white"), "#" %>
+  <%= link_to image_tag("company-logo-white.png", class:"logo-white"), root_path %>
   <p>© SAKEnoKOKORO</p>
 </div>
