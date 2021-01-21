@@ -25,11 +25,9 @@
 
 .item-column {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 0.5em 1em;
   margin: 2em 20em;
-  font-weight: bold;
-  color: #333333;
   background: #FFF;
   border: solid 1px #333333;
   border-radius: 10px;
@@ -41,6 +39,19 @@
 
 .item-name {
   font-size: 25px;
+  color: #333333;
+  font-weight: bold;
+}
+
+.item-info {
+  color: #333333;
+  width: 80%;
+  margin-top: 5px;
+}
+
+.item-price {
+  color: #333333;
+  font-weight: bold;
 }
 
 .heart-icon {
