@@ -1,17 +1,47 @@
 <header class='top-page-header'>
   <div class='user-name'>
-      <% if user_signed_in? %>
-        <span><%= link_to "#{current_user.nickname}さん", "#", class: "user-nickname" %></span>
-        <span><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></span>
-      <% else %>
-        <%= link_to 'ゲストさん', new_user_session_path, class: "login" %>
-      <% end %>
+    <%# ユーザーログイン時はニックネームとログアウトボタンを表示 %>
+    <% if user_signed_in? %>
+      <span><%= link_to "#{current_user.nickname}さん", "#", class: "user-nickname" %></span>
+      <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#logoutModalCenter">
+        ログアウト
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="logoutModalCenter" tabindex="-1" role="dialog" aria-labelledby="logoutModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="logoutModalCenterTitle">ログアウトの確認</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p style="text-align:left;">ログアウトしますか？</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- //Modal -->
+    <%# 未ログイン時は以下を表示 %>
+    <% else %>
+      <span>ゲストさん</span>
+      <button type="button" class="btn btn-secondary btn-sm">
+        <%= link_to 'ログイン', new_user_session_path, class: "login" %>
+      </button>
+    <% end %>
   </div>
 
   <div class='header-container'>
+    <%# ロゴ（ヘッダー左） %>
     <div class='header-logo'>
       <%= link_to image_tag("company-logo.png", class:"company-logo"), "/" %>
     </div>
+    <%# グローバルナビゲーション（ヘッダー中央） %>
     <div class='header-nav'>
       <ul class='lists-left'>
         <li><%= link_to '商品一覧', items_path, class: "item-list" %></li>
@@ -21,6 +51,7 @@
         <li><%= link_to '会員登録', new_user_registration_path, class: "sign-up" %></li>
       </ul>
     </div>
+    <%# アイコン（ヘッダー右） %>
     <div class='header-btn'>
       <ul class='btn-list'>
         <li>
