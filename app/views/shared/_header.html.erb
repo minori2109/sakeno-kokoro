@@ -54,17 +54,20 @@
     <%# アイコン（ヘッダー右） %>
     <div class='header-btn'>
       <ul class='btn-list'>
+        <%# 検索 %>
         <li>
           <%= link_to '#' do %>
             <span><i class="fas fa-search fa-2x fa-fw"></i></span>
           <% end %>
         </li>
+        <%# ユーザーマイページ %>
         <li>
-          <%= link_to new_user_session_path do %>
+          <%= link_to user_path(current_user.id) do %>
             <span><i class="fas fa-user fa-2x fa-fw"></i></span>
           <% end %>
         </li>
         <li>
+        <%# ショッッピングカート %>
           <%= link_to '#' do %>
             <span><i class="fas fa-shopping-cart fa-2x fa-fw"></i></span>
           <% end %>
