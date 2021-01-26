@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_item, except: [:new]
+  before_action :set_item, except: [:new, :show]
   before_action :set_review, only: [:edit, :destroy]
   before_action :judge_user, only: [:edit, :destroy]
 
@@ -16,6 +16,13 @@ class ReviewsController < ApplicationController
     else
       render action: 'new'
     end
+  end
+
+  def show
+    @user = User.find(current_user.id)
+    @review = Review.find(@user.id)
+    @reviews = @user.reviews
+    @item = Item.find(@review.item_id)
   end
 
   def edit

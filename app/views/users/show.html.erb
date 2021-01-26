@@ -1,7 +1,35 @@
 <%= render "shared/header" %>
 <div class="breadcrumb">
-  <% breadcrumb :users %>
+  <% breadcrumb :user %>
   <p><%= breadcrumbs separator: " &rsaquo; " %></p>
+</div>
+
+<div class="mypage-main">
+  <div class="mypage-top">
+    <h1 class="mypage-title">マイページ</h1>
+  </div>
+
+  <h3 class="mypage-name">
+    <%= "#{current_user.last_name}\n#{current_user.first_name}\n様" %>
+  </h3>
+
+  <div class="user-item-info">
+    <h2>お買い物情報</h2>
+    <div class="item-info-lists">
+      <p><%= link_to "商品レビュー一覧", user_review_path(@user.id, @review) %></p>
+      <p><%= link_to "購入履歴", "#" %></p>
+      <p><%= link_to "お気に入りリスト", "#" %></p>
+    </div>
+  </div>
+  
+  <div class="manage-user-info">
+    <h2>お客様情報の管理</h2>
+    <div class="user-info-lists">
+      <p><%= link_to "会員情報の変更", "#" %></p>
+      <p><%= link_to "お届け先登録", "#" %></p>
+      <p><%= link_to "クレジットカード登録", "#" %></p>
+    </div>
+  </div>
 </div>
 
 <%= render "shared/footer" %>

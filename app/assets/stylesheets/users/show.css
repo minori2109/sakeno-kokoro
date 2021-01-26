@@ -1,0 +1,27 @@
+.mypage-title {
+  font-size: 32px;
+  padding: 20px 0 20px 100px;
+}
+
+.mypage-name {
+  font-size: 28px;
+  padding: 20px 0 20px 100px;
+}
+
+.user-item-info {
+  padding: 20px 0 20px 100px;
+}
+
+.item-info-lists {
+  display: flex;
+  justify-content: space-around;
+}
+
+.manage-user-info {
+  padding: 20px 0 20px 100px;
+}
+
+.user-info-lists {
+  display: flex;
+  justify-content: space-around;
+}

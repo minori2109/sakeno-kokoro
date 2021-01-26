@@ -24,9 +24,14 @@ crumb :item_order do
   parent :item_show_order
 end
 
-crumb :users do
-  link "マイページ", user_path
+crumb :user do
+  link "マイページ", user_path(current_user.id)
   parent :root
+end
+
+crumb :user_reviews do
+  link "レビュー一覧", user_review_path
+  parent :user
 end
 
 # crumb :project do |project|

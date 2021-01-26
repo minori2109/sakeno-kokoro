@@ -1,0 +1,94 @@
+<%= render "shared/header" %>
+<div class="breadcrumb">
+  <% breadcrumb :user_reviews %>
+  <p><%= breadcrumbs separator: " &rsaquo; " %></p>
+</div>
+
+<div class="user-review-title">
+  <h1><%= @review.user.nickname %>さんのレビュー一覧</h1>
+</div>
+
+<div class="user-reviews-container">
+  <% @reviews.each do |review| %>
+    <div class="review-main">
+      <div class="review-item">
+        <div class='review-left'>
+          <p>商品名：<%= link_to review.item.name, item_path(review.item.id) %></p>
+          <%= review.user.nickname %>
+          <span class="created-date">＜投稿日時：<%= review.updated_at.strftime('%Y/%m/%d %H:%M:%S') %>＞</span>
+          
+          <!--星評価javascript-->
+            <p id="star-rate-<%= review.id %>"></p>
+            <script>
+            $('#star-rate-<%= review.id %>').raty({
+              size:     32,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn:   '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half:     true,
+              readOnly: true,
+              score: <%= review.recommend_score %>,
+            });
+            </script>
+          <!--/星評価-->
+
+          <p>おすすめ度：<%= review.recommend_score %>点</p>
+          <p>味：<%= review.taste %>  ／  香り：<%= review.scent %></p>
+          <p>おすすめのおつまみ：<%= review.otsumami %></p>
+          <p><%= review.comment %></p>
+        </div>
+
+        <%# 味・香りのグラフ %>
+        <div class='review-right'>
+          <%= scatter_chart Review.where(id: review.id).pluck(:taste, :scent),
+              id: "taste-chart-#{review.id}",
+              width: '250px',
+              height: '250px',
+              xmin: -5,
+              xmax: 5,
+              min: 5,
+              max: -5,
+              stepSize: 1,
+              colors: ["#b00", "#666"],
+              xtitle: "味", ytitle: "香り" %>
+        </div>
+        <%# //味・香りのグラフ %>
+      </div>
+      <%# 編集・削除ボタン（投稿者のみ） %>
+      <div class="user-menu">
+        <% if user_signed_in? && review.user_id == current_user.id %>
+          <%= link_to "編集する", edit_item_review_path(@item.id, review.id), class:"btn btn-secondary btn-sm" %>
+          <%#= link_to "編集する", "#", class:"btn btn-secondary btn-sm" %>
+          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModalCenter">
+            削除する
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="deleteModalCenter" tabindex="-1" role="dialog" aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="deleteModalCenterTitle">削除の確認</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  このレビューを削除してもよろしいですか？
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+                  <%#= link_to "削除する", item_review_path(@item.id, review.id), method: :delete, class:"btn btn-danger" %>
+                  <%= link_to "削除する", "#", method: :delete, class:"btn btn-danger" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- //Modal -->
+        <% end %>
+      </div>
+      <%# //編集・削除ボタン（投稿者のみ） %>
+    </div>
+  <% end %>
+</div>
+
+<%= render "shared/footer" %>
