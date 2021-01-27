@@ -6,28 +6,92 @@
 
 <div class="mypage-main">
   <div class="mypage-top">
-    <h1 class="mypage-title">マイページ</h1>
+    <h3 class="mypage-name">
+      <%= "#{@user.last_name}\n#{@user.first_name}\n様\nの\nマイページ" %>
+    </h3>
   </div>
 
-  <h3 class="mypage-name">
-    <%= "#{@user.last_name}\n#{@user.first_name}\n様" %>
-  </h3>
-
   <div class="user-item-info">
-    <h2>お買い物情報</h2>
-    <div class="item-info-lists">
-      <p><%= link_to "商品レビュー一覧", review_path(@user.id) %></p>
-      <p><%= link_to "購入履歴", "#" %></p>
-      <p><%= link_to "お気に入りリスト", "#" %></p>
+    <h2 class="info-title">
+      <i class="fas fa-shopping-cart"></i>
+      お買い物情報
+    </h2>
+    <div class="info-lists">
+      <div class="card w-50">
+        <div class="card-body">
+          <p class="card-title info-list">
+            <%= link_to review_path(@user.id), class:"my-gray" do %>
+              商品レビュー一覧
+              <i class="fas fa-chevron-right my-gray"></i>
+            <% end %>
+          </p>
+          <p class="card-text">今までに投稿したレビューをご確認いただけます。</p>
+        </div>
+      </div>
+      <div class="card w-50">
+        <div class="card-body">
+          <p class="card-title info-list">
+            <%= link_to "#", class:"my-gray" do %>
+              購入履歴
+            <i class="fas fa-chevron-right my-gray"></i>
+            <% end %>
+          </p>
+          <p class="card-text">今までのご注文履歴をご確認いただけます。</p>
+        </div>
+      </div>
+      <div class="card w-50">
+        <div class="card-body">
+          <p class="card-title info-list">
+            <%= link_to "#", class:"my-gray" do %>
+              お気に入りリスト
+              <i class="fas fa-chevron-right my-gray"></i>
+            <% end %>
+          </p>
+          <p class="card-text">お気に入り登録した商品をご確認いただけます。</p>
+        </div>
+      </div>
     </div>
   </div>
   
   <div class="manage-user-info">
-    <h2>お客様情報の管理</h2>
-    <div class="user-info-lists">
-      <p><%= link_to "会員情報の変更", "#" %></p>
-      <p><%= link_to "お届け先登録", "#" %></p>
-      <p><%= link_to "クレジットカード登録", "#" %></p>
+    <h2 class="info-title">
+      <i class="fas fa-user-edit"></i>
+      お客様情報の管理
+    </h2>
+    <div class="info-lists">
+      <div class="card w-50">
+        <div class="card-body">
+          <p class="card-title info-list">
+            <%= link_to "#", class:"my-gray" do %>
+              会員情報の変更
+              <i class="fas fa-chevron-right my-gray"></i>
+            <% end %>
+          </p>
+          <p class="card-text">会員情報の編集を行うことができます。</p>
+        </div>
+      </div>
+      <div class="card w-50">
+        <div class="card-body">
+          <p class="card-title info-list">
+            <%= link_to "#", class:"my-gray" do %>
+              お届け先登録
+              <i class="fas fa-chevron-right my-gray"></i>
+            <% end %>
+          </p>
+          <p class="card-text">お届け先情報の登録ができます。</p>
+        </div>
+      </div>
+      <div class="card w-50">
+        <div class="card-body">
+          <p class="card-title info-list">
+            <%= link_to  "#", class:"my-gray" do %>
+              クレジットカード登録
+              <i class="fas fa-chevron-right my-gray"></i>
+            <% end %>
+          </p>
+          <p class="card-text">クレジットカード情報の登録を行えます。</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
