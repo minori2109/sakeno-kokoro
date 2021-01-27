@@ -20,9 +20,7 @@ class ReviewsController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
-    @review = Review.find(@user.id)
     @reviews = @user.reviews
-    @item = Item.find(@review.item_id)
   end
 
   def edit

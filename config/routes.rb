@@ -5,12 +5,11 @@ Rails.application.routes.draw do
     resources :reviews, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :orders, only: [:index, :create]
   end
-
-  resources :users, only: [:show] do
-    resources :reviews, only: [:show]
+  namespace :admin do
+    resources :items
   end
 
-    namespace :admin do
-      resources :items
-    end
+  resources :reviews, only: [:show]
+  resources :users, only: [:show]
+
 end

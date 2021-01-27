@@ -30,7 +30,7 @@ crumb :user do
 end
 
 crumb :user_reviews do
-  link "レビュー一覧", user_review_path
+  link "レビュー一覧", review_path
   parent :user
 end
 

@@ -5,7 +5,7 @@
 </div>
 
 <div class="user-review-title">
-  <h1><%= @review.user.nickname %>さんのレビュー一覧</h1>
+  <h1><%= current_user.nickname %>さんのレビュー一覧</h1>
 </div>
 
 <div class="user-reviews-container">
@@ -57,8 +57,7 @@
       <%# 編集・削除ボタン（投稿者のみ） %>
       <div class="user-menu">
         <% if user_signed_in? && review.user_id == current_user.id %>
-          <%= link_to "編集する", edit_item_review_path(@item.id, review.id), class:"btn btn-secondary btn-sm" %>
-          <%#= link_to "編集する", "#", class:"btn btn-secondary btn-sm" %>
+          <%= link_to "編集する", edit_item_review_path(review.item_id, review.id), class:"btn btn-secondary btn-sm" %>
           <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModalCenter">
             削除する
           </button>
@@ -77,8 +76,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
-                  <%#= link_to "削除する", item_review_path(@item.id, review.id), method: :delete, class:"btn btn-danger" %>
-                  <%= link_to "削除する", "#", method: :delete, class:"btn btn-danger" %>
+                  <%= link_to "削除する", item_review_path(review.item_id, review.id), method: :delete, class:"btn btn-danger" %>
                 </div>
               </div>
             </div>
