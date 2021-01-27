@@ -2,7 +2,7 @@
   <div class='user-name'>
     <%# ユーザーログイン時はニックネームとログアウトボタンを表示 %>
     <% if user_signed_in? %>
-      <span><%= link_to "#{current_user.nickname}さん", "#", class: "user-nickname" %></span>
+      <span><%= link_to "#{current_user.nickname}さん", user_path(current_user.id), class: "user-nickname" %></span>
       <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#logoutModalCenter">
         ログアウト
       </button>

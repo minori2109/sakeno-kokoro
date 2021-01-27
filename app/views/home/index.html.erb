@@ -1,5 +1,7 @@
 <%= render "shared/header" %>
 
+<%= flash_message(flash[:error], :danger) if flash[:error] %>
+
 <div class='main'>
   <%# 画面上部の「SAKEnoKOKORO」帯部分 %>
   <div class="home-image">
