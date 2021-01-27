@@ -27,8 +27,13 @@ end
 # //購入画面のパンくずリスト
 
 crumb :user do
-  link "マイページ", user_path(params[:id])
+  link "マイページ", user_path(current_user.id)
   parent :root
+end
+
+crumb :user_edit do
+  link "会員報編集", edit_user_registration_path
+  parent :user
 end
 
 # ユーザーマイページからレビュー一覧参照時(閲覧者＝投稿者)

@@ -1,4 +1,8 @@
 <%= render "shared/header"%>
+<div class="breadcrumb">
+  <% breadcrumb :user_edit %>
+  <p><%= breadcrumbs separator: " &rsaquo; " %></p>
+</div>
 
 <%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
 <div class='form-wrap'>
@@ -73,6 +77,9 @@
   </div>
   <div class='register-btn'>
     <%= f.submit "会員情報変更", class:"register-blue-btn" %>
+    <p class="btn-gray">
+      <%= link_to 'もどる', user_path(current_user.id), class:"btn btn-secondary" %>
+    </p>
   </div>
 </div>
 <% end %>
