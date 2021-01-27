@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
   before_action :set_item, except: [:new, :show]
   before_action :set_review, only: [:edit, :destroy]
   before_action :judge_user, only: [:edit, :destroy]
@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @user = User.find(current_user.id)
+    @user = User.find(params[:id])
     @reviews = @user.reviews.order('updated_at DESC')
   end
 

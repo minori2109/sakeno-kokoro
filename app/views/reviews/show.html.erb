@@ -1,14 +1,22 @@
 <%= render "shared/header" %>
-<div class="breadcrumb">
-  <% breadcrumb :user_reviews %>
-  <p><%= breadcrumbs separator: " &rsaquo; " %></p>
-</div>
+
+<% if user_signed_in? && @user.id == current_user.id %>
+  <div class="breadcrumb">
+    <% breadcrumb :user_reviews %>
+    <p><%= breadcrumbs separator: " &rsaquo; " %></p>
+  </div>
+<% else %>
+  <div class="breadcrumb">
+    <% breadcrumb :item_reviews_show %>
+    <p><%= breadcrumbs separator: " &rsaquo; " %></p>
+  </div>
+<% end %>
 
 <%= flash_message(flash[:success], :success) if flash[:success] %>
 <%= flash_message(flash[:error], :danger) if flash[:error] %>
 
 <div class="user-review-title">
-  <h1><%= current_user.nickname %>さんのレビュー一覧</h1>
+  <h1><%= @user.nickname %>さんのレビュー一覧</h1>
 </div>
 
 <div class="user-reviews-container">

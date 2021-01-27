@@ -13,6 +13,7 @@ crumb :item_show do
   parent :items
 end
 
+# 購入画面のパンくずリスト
 crumb :item_show_order do
   item = Item.find(params[:item_id])
   link "#{item.name}", item_path(params[:item_id])
@@ -23,15 +24,24 @@ crumb :item_order do
   link "購入内容の確認"
   parent :item_show_order
 end
+# //購入画面のパンくずリスト
 
 crumb :user do
-  link "マイページ", user_path(current_user.id)
+  link "マイページ", user_path(params[:id])
   parent :root
 end
 
+# ユーザーマイページからレビュー一覧参照時(閲覧者＝投稿者)
 crumb :user_reviews do
   link "レビュー一覧", review_path
   parent :user
+end
+
+# 商品一覧からレビュー一覧参照時(閲覧者≠投稿者)
+crumb :item_reviews_show do
+  item = Item.find(params[:id])
+  link "レビュー一覧", review_path
+  parent :items
 end
 
 # crumb :project do |project|

@@ -125,7 +125,7 @@
         <div class="review-main">
           <div class="review-item">
             <div class='review-left'>
-              <%= link_to review.user.nickname, "#" %>
+              <%= link_to review.user.nickname, review_path(review.user.id) %>
               <span class="created-date">＜投稿日時：<%= review.updated_at.strftime('%Y/%m/%d %H:%M:%S') %>＞</span>
               
               <!--星評価javascript-->
