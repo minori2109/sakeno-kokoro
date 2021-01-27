@@ -4,6 +4,8 @@
   <p><%= breadcrumbs separator: " &rsaquo; " %></p>
 </div>
 
+<%= flash_message(flash[:success], :success) if flash[:success] %>
+
 <div class="mypage-main">
   <div class="mypage-top">
     <h3 class="mypage-name">
@@ -62,7 +64,7 @@
       <div class="card w-50">
         <div class="card-body">
           <p class="card-title info-list">
-            <%= link_to "#", class:"my-gray" do %>
+            <%= link_to edit_user_registration_path, class:"my-gray" do %>
               会員情報の変更
               <i class="fas fa-chevron-right my-gray"></i>
             <% end %>
