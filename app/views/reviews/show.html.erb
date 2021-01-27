@@ -4,6 +4,9 @@
   <p><%= breadcrumbs separator: " &rsaquo; " %></p>
 </div>
 
+<%= flash_message(flash[:success], :success) if flash[:success] %>
+<%= flash_message(flash[:error], :danger) if flash[:error] %>
+
 <div class="user-review-title">
   <h1><%= current_user.nickname %>さんのレビュー一覧</h1>
 </div>

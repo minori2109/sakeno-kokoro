@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
     @review = @item.reviews.new(review_params)
     if @review.save
       flash[:success] = '投稿が完了しました'
-      redirect_to item_show
+      redirect_to item_path(@review.item_id)
     else
       render action: 'new'
     end
@@ -20,7 +20,7 @@ class ReviewsController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
-    @reviews = @user.reviews
+    @reviews = @user.reviews.order('updated_at DESC')
   end
 
   def edit
@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
     @review = @item.reviews.find(params[:id])
     if @review.update(review_params)
       flash[:success] = '編集が完了しました'
-      redirect_to item_show
+      redirect_to review_path
     else
       render action: 'edit'
     end
@@ -39,9 +39,9 @@ class ReviewsController < ApplicationController
   def destroy
     if @review.destroy
       flash[:error] = 'レビューを削除しました'
-      redirect_to item_show
+      redirect_to review_path
     else
-      render item_show
+      render review_path
     end
   end
 
@@ -58,7 +58,7 @@ class ReviewsController < ApplicationController
   def judge_user
     if @review.user_id != current_user.id
       flash[:error] = '権限がありません'
-      redirect_to item_show
+      redirect_to item_path(@review.item_id)
     end
   end
 
@@ -66,7 +66,4 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:recommend_score, :taste, :scent, :otsumami, :comment).merge(user_id: current_user.id, item_id: params[:item_id])
   end
 
-  def item_show
-    item_path(@review.item_id)
-  end
 end
