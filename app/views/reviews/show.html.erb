@@ -1,11 +1,14 @@
 <%= render "shared/header" %>
 
+<%# レビュー一覧の閲覧者がログインしているレビュー投稿者か判定 %>
 <% if user_signed_in? && @user.id == current_user.id %>
+  <%# マイページからレビュー一覧表示したとき %>
   <div class="breadcrumb">
     <% breadcrumb :user_reviews %>
     <p><%= breadcrumbs separator: " &rsaquo; " %></p>
   </div>
 <% else %>
+  <%# 商品詳細ページからレビュー一覧表示したとき %>
   <div class="breadcrumb">
     <% breadcrumb :item_reviews_show %>
     <p><%= breadcrumbs separator: " &rsaquo; " %></p>
@@ -19,6 +22,7 @@
   <h1><%= @user.nickname %>さんのレビュー一覧</h1>
 </div>
 
+<%# レビューを一覧表示 %>
 <div class="user-reviews-container">
   <% if @reviews.present? %>
     <% @reviews.each do |review| %>
@@ -100,6 +104,7 @@
       </div>
     <% end %>
   <% else %>
+    <%# レビューが存在しない場合は、以下を表示 %>
     <p class="no-review">まだ、レビューがありません。投稿してみましょう！</p>
   <% end %>
 </div>
