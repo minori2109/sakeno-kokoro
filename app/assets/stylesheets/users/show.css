@@ -1,0 +1,36 @@
+.mypage-main {
+  padding: 20px 20px 50px;
+}
+
+.mypage-name {
+  font-size: 32px;
+  padding: 20px 0 20px 100px;
+}
+
+.user-item-info {
+  padding: 20px 100px;
+}
+
+.info-title {
+  font-weight: bold;
+  padding: 10px;
+  font-size: 24px;
+  color: #333333;
+}
+
+.info-lists {
+  display: flex;
+  justify-content: space-around;
+}
+
+.info-list {
+  font-size: 20px;
+}
+
+.manage-user-info {
+  padding: 20px 100px;
+}
+
+.my-gray {
+  color: #333333;
+}

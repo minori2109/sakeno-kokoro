@@ -125,7 +125,7 @@
         <div class="review-main">
           <div class="review-item">
             <div class='review-left'>
-              <%= link_to review.user.nickname, "#" %>
+              <%= link_to review.user.nickname, review_path(review.user.id) %>
               <span class="created-date">＜投稿日時：<%= review.updated_at.strftime('%Y/%m/%d %H:%M:%S') %>＞</span>
               
               <!--星評価javascript-->
@@ -165,43 +165,12 @@
             </div>
             <%# //味・香りのグラフ %>
           </div>
-          <%# 編集・削除ボタン（投稿者のみ） %>
-          <div class="user-menu">
-            <% if user_signed_in? && review.user_id == current_user.id %>
-              <%= link_to "編集する", edit_item_review_path(@item.id, review.id), class:"btn btn-secondary btn-sm" %>
-              <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModalCenter">
-                削除する
-              </button>
-              <!-- Modal -->
-              <div class="modal fade" id="deleteModalCenter" tabindex="-1" role="dialog" aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="deleteModalCenterTitle">削除の確認</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      このレビューを削除してもよろしいですか？
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
-                      <%= link_to "削除する", item_review_path(@item.id, review.id), method: :delete, class:"btn btn-danger" %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- //Modal -->
-            <% end %>
-          </div>
-          <%# //編集・削除ボタン（投稿者のみ） %>
         </div>
       <% end %>
       <%# //レビュー表示 %>
     <%# レビューが存在しない場合、以下を表示 %>
     <% else %>
-      <div class="no-review">
+      <div class="item-no-review">
         <p>この商品のレビューはまだありません。最初のレビューを投稿してみましょう！</p>
         <p class="caution">
           ※レビューの投稿には<%= link_to "ログイン", new_user_session_path %>、

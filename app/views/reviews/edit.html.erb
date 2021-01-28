@@ -1,5 +1,10 @@
 <%= render "shared/header" %>
 
+<div class="breadcrumb">
+  <% breadcrumb :user_reviews_edit %>
+  <p><%= breadcrumbs separator: " &rsaquo; " %></p>
+</div>
+
 <div class="items-review-main">
   <h2 class="items-review-title">商品のレビューを編集する</h2>
   <%= form_with(model: [@item, @review], url: item_review_path(@item.id, @review.id), method: :put, local: true) do |f| %>
@@ -67,7 +72,7 @@
   <div class="btn-container">
     <div class="row">
       <div class="col text-center">
-        <%= f.submit "投稿する", class: "btn btn-success" %>
+        <%= f.submit "変更する", class: "btn btn-success" %>
         <%= link_to 'もどる', item_path(params[:item_id]), class:"btn btn-secondary" %>
       </div>
     </div>

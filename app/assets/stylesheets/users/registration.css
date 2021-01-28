@@ -159,6 +159,8 @@
   line-height: 48px;
   font-size: 14px;
   cursor: pointer;
+  margin: 10px;
+  border-radius: 5px;
 }
 
 .register-info {
@@ -166,4 +168,10 @@
   color: #0099e8;
   text-align: right;
   cursor: pointer;
+}
+
+.btn-gray {
+  text-align: center;
+  padding: 5px;
+  width: 30%px;
 }
