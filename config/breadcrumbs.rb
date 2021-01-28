@@ -38,8 +38,13 @@ end
 
 # ユーザーマイページからレビュー一覧参照時(閲覧者＝投稿者)
 crumb :user_reviews do
-  link "レビュー一覧", review_path
+  link "レビュー一覧", review_path(current_user.id)
   parent :user
+end
+
+crumb :user_reviews_edit do
+  link "レビュー編集"
+  parent :user_reviews
 end
 
 # 商品一覧からレビュー一覧参照時(閲覧者≠投稿者)
