@@ -20,7 +20,7 @@ class ReviewsController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @reviews = @user.reviews.order('updated_at DESC')
+    @reviews = @user.reviews.order('updated_at DESC').page(params[:page]).per(5)
   end
 
   def edit
