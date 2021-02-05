@@ -23,4 +23,8 @@ class User < ApplicationRecord
     validates :first_name_kana, format: { with: VALID_NAME_KANA_REGEX, message: 'は全角カタカナで入力してください', allow_blank: true }
     validates :birthday
   end
+
+  def liked_by?(item_id)
+    favorites.where(item_id: item_id).exists?
+  end
 end

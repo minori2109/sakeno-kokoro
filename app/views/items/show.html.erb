@@ -55,8 +55,13 @@
             <%= link_to '購入する', item_orders_path(@item.id), class:"item-grey-btn"%>
           <% end %>
           <div class="favorite-btn">
-            <%= image_tag "heart.png" ,class:"favorite-heart-icon", width:"20", height:"20"%>
-            <span>お気に入り 0</span>
+            <%# <i class="far fa-heart favorite-heart-icon"></i>
+            <span>お気に入り</span> %>
+            <% if current_user.liked_by?(@item.id) %>
+              <td><%= link_to 'お気に入りを解除する', item_favorite_path(@item.id), method: :delete %></td>
+            <% else %>
+              <td><%= link_to 'お気に入り', item_favorites_path(@item.id), method: :post %></td>
+            <% end %>
           </div>
         </div>
         <div class="item-explain-box">

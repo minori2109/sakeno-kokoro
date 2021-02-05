@@ -1,13 +1,15 @@
 class FavoritesController < ApplicationController
-  before_action :autenticate_user!
+  before_action :authenticate_user!
+  before_action :set_item
 
   def create
-    @favorite = Favorite.create(user_id: current_user.id, item_id: @item.id)
+    Favorite.create(user_id: current_user.id, item_id: @item.id)
+    redirect_to item_path(@item.id)
   end
 
   def destroy
-    @favorite = Favorite.find_by(user_id: current_user.id, item_id: @item.id)
-    @favorite.destroy
+    Favorite.find_by(user_id: current_user.id, item_id: @item.id).destroy
+    redirect_to item_path(@item.id)
   end
 
   private
