@@ -52,16 +52,10 @@
         </div>
         <div class="option">
           <% if @item.order == nil %>
-            <%= link_to '購入する', item_orders_path(@item.id), class:"item-grey-btn"%>
+            <%= link_to '購入する', item_orders_path(@item.id), class:"item-gray-btn"%>
           <% end %>
-          <div class="favorite-btn">
-            <%# <i class="far fa-heart favorite-heart-icon"></i>
-            <span>お気に入り</span> %>
-            <% if current_user.liked_by?(@item.id) %>
-              <td><%= link_to 'お気に入りを解除する', item_favorite_path(@item.id), method: :delete %></td>
-            <% else %>
-              <td><%= link_to 'お気に入り', item_favorites_path(@item.id), method: :post %></td>
-            <% end %>
+          <div class="favorite-btn", id="item_<%= @item.id %>" >
+            <%= render 'favorite', item: @item %>
           </div>
         </div>
         <div class="item-explain-box">

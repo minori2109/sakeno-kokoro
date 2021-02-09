@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show] do
     resources :reviews, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :orders, only: [:index, :create]
-    resources :favorites, only: [:create, :destroy]
   end
+  post 'favorites/:id' => 'favorites#create', as: 'create_favorites'
+  delete 'favorites/:id' => 'favorites#destroy', as: 'destroy_favorites'
+
   namespace :admin do
     resources :items
   end
