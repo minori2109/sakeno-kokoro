@@ -4,7 +4,7 @@ class FavoritesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @favorites = @user.favorites.order('updated_at DESC').page(params[:page]).per(5)
+    @favorites = @user.favorites.order('updated_at DESC').page(params[:page]).per(9)
   end
 
   def create
