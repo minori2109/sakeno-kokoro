@@ -1,0 +1,25 @@
+.delete-favorite-btn {
+  background-color: crimson;
+}
+
+.delete-favorite {
+  background-color: crimson;
+  text-decoration: none;
+  color: white;
+}
+
+.delete-favorite:hover {
+  text-decoration: none;
+}
+
+.add-favorite-btn {
+  background-color: white;
+  border-radius: 8px;
+  width: 100%;
+  padding-left: 10%;
+}
+
+.add-favorite {
+  text-decoration: none;
+  color: crimson;
+}

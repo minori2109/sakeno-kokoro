@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   # アソシエーション
   has_many :reviews, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   # バリデーション
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)\w{6,}\z/.freeze
@@ -21,5 +22,9 @@ class User < ApplicationRecord
     validates :last_name_kana, format: { with: VALID_NAME_KANA_REGEX, message: 'は全角カタカナで入力してください', allow_blank: true }
     validates :first_name_kana, format: { with: VALID_NAME_KANA_REGEX, message: 'は全角カタカナで入力してください', allow_blank: true }
     validates :birthday
+  end
+
+  def liked_by?(item_id)
+    favorites.where(item_id: item_id).exists?
   end
 end

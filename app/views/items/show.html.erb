@@ -52,11 +52,10 @@
         </div>
         <div class="option">
           <% if @item.order == nil %>
-            <%= link_to '購入する', item_orders_path(@item.id), class:"item-grey-btn"%>
+            <%= link_to '購入する', item_orders_path(@item.id), class:"item-gray-btn"%>
           <% end %>
-          <div class="favorite-btn">
-            <%= image_tag "heart.png" ,class:"favorite-heart-icon", width:"20", height:"20"%>
-            <span>お気に入り 0</span>
+          <div class="favorite-btn", id="item_<%= @item.id %>" >
+            <%= render 'favorite', item: @item %>
           </div>
         </div>
         <div class="item-explain-box">

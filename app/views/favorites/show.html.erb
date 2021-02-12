@@ -1,0 +1,37 @@
+<%= render "shared/header" %>
+
+<div class="breadcrumb">
+  <% breadcrumb :user_favorites %>
+  <p><%= breadcrumbs separator: " &rsaquo; " %></p>
+</div>
+
+<div class="user-review-title">
+  <h1><%= @user.nickname %>さんのお気に入り一覧</h1>
+</div>
+
+<div class="favorites-list">
+  <% if @favorites.present? %>
+    <% @favorites.each do |favorite| %>
+    <div class="list">
+      <div class="card" style="width: 15rem;">
+        <%= link_to item_path(favorite.item.id), class:"card-link" do %>
+          <%= image_tag favorite.item.image, class:"card-img-top" %>
+          <div class="card-body">
+            <h4 class="card-title", style="font-weight:bold;"><%= favorite.item.name %></h4>
+            <p>登録日：<%= favorite.updated_at.strftime('%Y/%m/%d') %></p>
+            <% if @item.order == nil %>
+              <%= link_to '購入する', item_orders_path(favorite.item.id), class:"item-gray-btn"%>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  <% else %>
+    <h1>お気に入り登録済みの商品がありません。</h1>
+  <% end %>
+</div>
+
+<%= paginate @favorites %>
+
+<%= render "shared/footer" %>

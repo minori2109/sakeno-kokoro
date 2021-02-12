@@ -7,11 +7,16 @@ Rails.application.routes.draw do
     resources :reviews, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :orders, only: [:index, :create]
   end
+  post 'favorites/:id' => 'favorites#create', as: 'create_favorites'
+  delete 'favorites/:id' => 'favorites#destroy', as: 'destroy_favorites'
+
   namespace :admin do
     resources :items
   end
 
   resources :reviews, only: [:show]
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    resources :favorites, only: [:show]
+  end
 
 end

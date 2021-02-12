@@ -9,6 +9,7 @@ class Item < ApplicationRecord
   has_one :order
 
   has_many :reviews, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   # 画像の添付
   has_one_attached :image
