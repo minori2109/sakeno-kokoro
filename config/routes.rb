@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :reviews, only: [:show]
   resources :users, only: [:show] do
-    get :favorites, on: :collection
+    resources :favorites, only: [:show]
   end
 
 end
