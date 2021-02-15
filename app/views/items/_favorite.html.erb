@@ -1,11 +1,18 @@
-<% if current_user.liked_by?(item.id) %>
-  <div class="delete-favorite-btn">
-    <i class="fas fa-heart heart-icon"></i>
-    <%= link_to 'お気に入りから削除', destroy_favorites_path(item), method: :delete, remote: true, class:'delete-favorite' %>
-  </div>
+<% if user_signed_in? %>
+  <% if current_user.liked_by?(item.id) %>
+    <div class="delete-favorite-btn">
+      <i class="fas fa-heart heart-icon"></i>
+      <%= link_to 'お気に入りから削除', destroy_favorites_path(item), method: :delete, remote: true, class:'delete-favorite' %>
+    </div>
+  <% else %>
+    <div class="add-favorite-btn">
+      <i class="far fa-heart heart-icon"></i>
+      <%= link_to 'お気に入りに追加', create_favorites_path(item), method: :post, remote: true, class:'add-favorite' %>
+    </div>
+  <% end %>
 <% else %>
   <div class="add-favorite-btn">
     <i class="far fa-heart heart-icon"></i>
-    <%= link_to 'お気に入りに追加', create_favorites_path(item), method: :post, remote: true, class:'add-favorite' %>
+    <%= link_to 'お気に入りに追加', new_user_session_path, class:'add-favorite' %>
   </div>
 <% end %>
