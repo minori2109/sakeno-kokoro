@@ -1,15 +1,20 @@
+.heart-icon {
+  font-size: 6em;
+  margin-right: 3px;
+  color: crimson;
+}
+
 .delete-favorite-btn {
-  background-color: crimson;
+  color: crimson;
 }
 
 .delete-favorite {
-  background-color: crimson;
-  text-decoration: none;
-  color: white;
+  color: crimson;
 }
 
 .delete-favorite:hover {
   text-decoration: none;
+  color: #333333;
 }
 
 .add-favorite-btn {
@@ -20,6 +25,10 @@
 }
 
 .add-favorite {
+  color: #333333;
+}
+
+.add-favorite:hover {
   text-decoration: none;
   color: crimson;
 }
