@@ -109,24 +109,24 @@
 }
 
 .favorite-btn {
-  border-radius: 10px;
+  /* border-radius: 10px; */
   width: 12vw;
   min-width: 200px;
-  background-color: crimson;
-  /* color: #CC0000; */
-  border: 2px solid #CC0000;
+  /* background-color: crimson;
+  border: 2px solid #CC0000; */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.item-gray-btn:hover {
-  text-decoration: none;
-  color: #f8f8ff;
+.item-gray-btn {
+  background-color: #333333;
 }
 
-.favorite-heart-icon {
-  margin-right: 3px;
+.item-gray-btn:hover {
+  text-decoration: none;
+  background-color: #3f3f3f;
+  color: #f8f8ff;
 }
 
 .item-explain-box{

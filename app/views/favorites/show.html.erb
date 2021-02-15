@@ -9,6 +9,7 @@
   <h1><%= @user.nickname %>さんのお気に入り一覧</h1>
 </div>
 
+<%# 起き入り商品が存在する場合、更新日時順に表示 %>
 <div class="favorites-list">
   <% if @favorites.present? %>
     <% @favorites.each do |favorite| %>
@@ -27,8 +28,9 @@
       </div>
     </div>
     <% end %>
+  <%# お気に入り登録がない場合は以下を表示 %>
   <% else %>
-    <h1>お気に入り登録済みの商品がありません。</h1>
+    <h1 class="no-favorites">お気に入り登録済みの商品がありません。</h1>
   <% end %>
 </div>
 

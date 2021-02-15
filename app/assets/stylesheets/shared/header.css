@@ -27,6 +27,10 @@
 }
 
 .login {
+  color: #fff;
+}
+
+.login:hover {
   text-decoration: none;
   color: #fff;
 }
