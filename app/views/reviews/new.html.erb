@@ -1,5 +1,10 @@
 <%= render "shared/header" %>
 
+<div class="breadcrumb">
+  <% breadcrumb :item_review %>
+  <p><%= breadcrumbs separator: " &rsaquo; " %></p>
+</div>
+
 <div class="items-review-main">
   <h2 class="items-review-title">商品のレビューを投稿する</h2>
   <%= form_with(model: [@item, @review], url: item_reviews_path, local: true) do |f| %>
